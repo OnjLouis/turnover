@@ -94,8 +94,7 @@ person is never without speech, and TurnOver can concentrate on the apps where i
 
 TurnOver has its own settings (the Settings window, Command Control Comma then S). "Copy VoiceOver settings" is a
 one-time import of your voice, rate, pitch, verbosity and typing echo, so a new user starts where they were; it is not
-how settings are meant to be managed. Rate, volume and pitch are kept in step with VoiceOver's so the two readers
-sound the same when they hand over.
+how settings are meant to be managed.
 
 Whether TurnOver should aim to stand entirely on its own is a fair question, and one for Discussions on this
 repository. The plans in docs/ say which decisions are settled and which are open.

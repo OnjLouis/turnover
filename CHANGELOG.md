@@ -6,6 +6,10 @@ The newest build is first. "Reported by a tester" marks a fix for something a te
 
 ### Fixed
 
+- The speech settings are TurnOver's own again: the rate, volume and pitch keys change TurnOver's voice only, and
+  TurnOver no longer reads VoiceOver's rate when it takes over. The link between the two readers' settings wasn't
+  reliable.
+
 - VoiceOver keys: Right Arrow reads the character you just passed, as VoiceOver does, so what you hear is what
   Backspace will delete. NVDA keys and JAWS keys keep reading the character after the caret, as on Windows.
 - Backspace speaks the deleted character at once, instead of after waiting for the caret (Mail's compose window held

@@ -18,9 +18,12 @@ public enum SpeechParity {
     nonisolated(unsafe) private static var refused = false   // main thread
     nonisolated(unsafe) private static var toldRefused = false   // main thread
 
-    /// Whether this setting goes through VoiceOver now.
+    /// Whether this setting goes through VoiceOver now. Off since 20 Oct 2026 (Oliver: "get rid of that bonding of
+    /// VoiceOver and TurnOver voices, it's not working correctly"): the keys change TurnOver's own voice only, and
+    /// TurnOver no longer reads VoiceOver's rate as it takes over. The code stays for a better attempt.
+    public static let on = false
     public static func applies(_ setting: String) -> Bool {
-        paired.contains(setting) && Coexist.on && !refused
+        on && paired.contains(setting) && Coexist.on && !refused
             && !NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.VoiceOver").isEmpty
     }
 
