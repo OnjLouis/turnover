@@ -1,0 +1,20 @@
+# Build products live in ~/Library/Developer/TurnOver/build (build.sh); this one is Xcode's and swift build's
+.build/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+.swiftpm/
+.DS_Store
+.claude/settings.local.json
+# Other people's repositories cloned for reading; not part of TurnOver
+reference/AX/
+reference/AccessibilityElement/
+reference/ScreenReader/
+reference/SpeakUp/
+reference/Vosh/
+reference/nvda-addon-devguide/
+reference/nvda-addon-template/
+reference/nvda/
+__pycache__/
+
+# Local build output
+/build/

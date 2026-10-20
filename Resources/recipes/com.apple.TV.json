@@ -1,0 +1,7 @@
+{
+  "bundle": "com.apple.TV",
+  "name": "TV",
+  "view": {
+    "kind": "media"
+  }
+}

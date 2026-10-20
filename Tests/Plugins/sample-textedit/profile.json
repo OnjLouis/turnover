@@ -1,0 +1,6 @@
+{
+  "labels": [
+    // The window's proxy icon, said as something to press.
+    { "match": { "role": "AXImage", "title": "*.txt" }, "name": "Document icon", "role": "button" },
+  ],
+}

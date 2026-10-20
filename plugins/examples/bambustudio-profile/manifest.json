@@ -1,0 +1,25 @@
+{
+  "id": "bambustudio-profile",
+  "name": "Bambu Studio",
+  "version": "0.1",
+  "author": "TurnOver",
+  "description": "Names the home page's buttons, and adds keys for a new project and opening a project.",
+  "apps": [
+    "com.bambulab.bambu-studio"
+  ],
+  "kind": "profile",
+  "summary": "Names Bambu Studio's home page buttons, and adds keys for a new or existing project.",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "privacy": "Reads Bambu Studio's window only; nothing leaves your Mac.",
+  "license": "MIT",
+  "changes": [
+    {
+      "version": "0.1",
+      "notes": "First version."
+    }
+  ],
+  "abilities": [
+    "read",
+    "menu"
+  ]
+}

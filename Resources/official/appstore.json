@@ -1,0 +1,20 @@
+{
+  "id": "official-appstore",
+  "name": "App Store",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "The App Store's pages and lists, with keys to move between items.",
+  "description": "App Store: app pages and lists read in order, with keys for the next and previous item.",
+  "apps": [
+    "com.apple.AppStore"
+  ],
+  "kind": "official",
+  "privacy": "Reads App Store only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

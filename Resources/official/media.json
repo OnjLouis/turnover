@@ -1,0 +1,22 @@
+{
+  "id": "official-media",
+  "name": "Music, TV and Podcasts",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Music, TV and Podcasts: what's playing and the lists, with playback keys.",
+  "description": "Media apps: now playing, lists and sidebars read clearly, with keys for playback.",
+  "apps": [
+    "com.apple.Music",
+    "com.apple.TV",
+    "com.apple.podcasts"
+  ],
+  "kind": "official",
+  "privacy": "Reads Music, TV and Podcasts only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

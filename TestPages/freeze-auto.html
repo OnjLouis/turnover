@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>TurnOver freeze test, automatic</title></head>
+<body>
+<h1>TurnOver freeze test, automatic</h1>
+<p>This version freezes by itself 4 seconds after it loads, for 15 seconds.</p>
+<p>This page stops answering on purpose, to test how TurnOver copes with a page that hangs (escalation E12).</p>
+<p>Press the button below. The page then freezes for 15 seconds. While it is frozen, try reading with the arrow keys
+and switching apps with Command Tab. TurnOver should say "Safari not responding" once, stay responsive itself,
+and read the page again when it comes back.</p>
+<button id="freeze" autofocus>Freeze this page for 15 seconds</button>
+<p id="status">Not frozen yet.</p>
+<h2>Some text to read</h2>
+<p>Line one of some text to read.</p>
+<p>Line two of some text to read.</p>
+<p>Line three of some text to read.</p>
+<script>
+document.getElementById('freeze').addEventListener('click', () => {
+  document.getElementById('status').textContent = 'Freezing now.';
+  setTimeout(() => {
+    const end = Date.now() + 15000;
+    while (Date.now() < end) { /* the page's main thread is busy: it answers nothing */ }
+    document.getElementById('status').textContent = 'Back again: the freeze is over.';
+  }, 300);
+});
+window.addEventListener('load', () => document.getElementById('freeze').focus());
+window.addEventListener('load', () => setTimeout(() => {
+  document.getElementById('status').textContent = 'Freezing now (automatic).';
+  const end = Date.now() + 15000;
+  while (Date.now() < end) { }
+  document.getElementById('status').textContent = 'Back again: the freeze is over.';
+}, 4000));
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+# Testing TurnOver
+
+## Unit tests (every build)
+
+`turnover-tests` (Sources/TurnOverTests) is a plain executable: no XCTest, so it runs with the command line tools alone.
+build.sh runs it after compiling and refuses to install if a test fails (`TURNOVER_SKIP_TESTS=1 ./build.sh` to skip).
+
+```bash
+swift build -c release --scratch-path ~/Library/Developer/TurnOver/build --product turnover-tests && ~/Library/Developer/TurnOver/build/release/turnover-tests -v
+```
+
+`turnover-tests <word>` runs only the tests whose name contains the word. The files: PureTests.swift (functions
+with no application behind them), FixtureTests.swift (objects and views against recorded windows, and the scale
+tests on a generated 1,000-row window with call budgets), PolicyTests.swift (the decisions that can leave a blind
+user with no reader: who leads, what the speech queue drops, the VoiceOver Activity's archive against a real export;
+and every recorded fixture read within a budget), GamesTests.swift (the Steam helper's
+line protocol) and PluginTests.swift (the parked plugin format, still tested so it does not rot).
+
+## Recorded windows (fixtures)
+
+A fixture is a window's accessibility tree as JSON (Tests/Fixtures/*.json): every element's attributes, the
+elements it refers to, the root's ancestors up to the application, and which element had the focus. Record one
+from a running application, with the window you want in front:
+
+```bash
+~/Library/Developer/TurnOver/build/release/turnover-coretest --record com.apple.TextEdit Tests/Fixtures/textedit-guide.json --limit 3000
+```
+
+In a test, `AXReplay.load(fixture)` serves it: `AXReplay.root`, `AXReplay.focus` and `AXReplay.application` are
+`AXUIElement`s that answer like the real ones, and so does every element reached from them, so `ObjectFactory.make`,
+`Speech.objectPropertiesSpeech`, the views and the browse mode buffer can be exercised without the application.
+Actions and set attributes are recorded (`AXReplay.actions`, `AXReplay.sets`); text questions (string for range, line
+for index) are answered from the recorded value.
+
+How it works: Sources/AXReplayShim is a C library that interposes the HIServices functions (dyld's `__interpose`
+section); elements whose pid is 900000 or more are answered from the recording, anything else goes to the real
+function. dyld honours interposing only in a library loaded at launch, so turnover-tests starts itself again with
+`DYLD_INSERT_LIBRARIES` pointing at libAXReplayShim.dylib beside it, and finds the shim's install function by name.
+
+Keep fixtures free of private content: record Apple's own content (Music's Browse page, the App Store, the beta
+guide in TextEdit), not mail, chats or documents.
+
+## The key reference in the guides
+
+Guides/09 to 11 (every key, one page per keyboard style) are generated from the command tables, not written:
+
+```bash
+~/Library/Developer/TurnOver/build/release/turnover-coretest --keys-reference Guides
+```
+
+Run it after any key or style-table change, then `python3 make-guides.py --text "Resources/TurnOver Guide.txt"`, and
+commit the result. Keys that belong to a document object (Word's, a web page's) aren't in it; they are described in
+Guides/03 and 04.
+
+## Driving the real thing
+
+> The key driver, the scenario files (testing/) and the regression pass described below are the maintainer's and
+> aren't in the public repository yet: they drive a real Mac and assume one person's setup. The unit tests and
+> fixtures above are complete.
+
+The key driver and probes run from ~/Library/Developer/TurnOver/tools (sources: Tools/drivers; t.sh, bt.sh, axshape and the rest); notes from
+each day's stress test are in testing/. Browsers are never driven: checklists instead (testing/chrome-signoff-checklist.md).
+
+## The regression pass (before every release)
+
+`testing/scenarios/regression/run.sh` runs every part, or the parts named (`run.sh core layer`). Since 17 Oct 2026 the
+parts that matter are the seventeen apps (core, day1, day2, days45), decisions, layer and keys; plugins, the Windows
+style and the keypad are parked and their parts are kept only so they still run. Its
+live copy is `~/Library/Developer/TurnOver/scenarios/regression/run.sh`; the tools it drives are built into
+`~/Library/Developer/TurnOver/tools` from `Tools/drivers`.
+
+Preconditions: the build under test installed as /Applications/TurnOver.app; its welcome closed (the runner refuses
+otherwise); the Mac idle for five minutes at the start (then 90 s before each part); the display awake; VoiceOver on
+with the Activity in (coexist is the product). The runner turns the `logSpeech` default on for the run (the
+scenarios read what was said from the log, which keeps lengths otherwise) and puts it back, quits every app it
+opened, and restores the front app on exit, however it ends.
+
+What a stop means (scenario.py's exit codes): 3, the owner is at the keyboard (an idle reset not explained by the
+test's own keys or TurnOver's logged hand-over); 4, the app under test is not in front (a cold start over 16 s, a
+dialog); 5, a style switch failed; 6, a key was passed through. The log names the part; run that part again.
+
+Every miss is read in TurnOver's log before it is called a regression: most are the test or the app. The known ones
+(Xcode's and Script Editor's last row, Excel's cold-start first key) are listed in the day's testing notes.
+
+## Scenarios (the daily pass as files)
+
+`testing/scenarios/*.txt` (live copy `~/Library/Developer/TurnOver/scenarios`) describe a run of keys in an app and what TurnOver must say or which
+script must run; `tools/scenario.py <file>` runs one with the key driver and reports each expectation (spoken words
+masked). The format is at the top of scenario.py. They refuse to run while the user is at the keyboard.
+
+`scenarios/run-all.sh mac` runs every scenario (the smoke pass before a build goes out; `windows` is the parked
+style); `tools/privacy-check.sh <feedback.zip> <words>` looks for private words in a feedback report.

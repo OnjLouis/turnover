@@ -1,0 +1,21 @@
+{
+  "id": "official-chat",
+  "name": "Messages and WhatsApp",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Conversations read message by message, with keys for the message box, the list and reactions.",
+  "description": "Chat apps: conversations and messages as lists, the message box, the latest messages by number, and a reactions list.",
+  "apps": [
+    "com.apple.MobileSMS",
+    "net.whatsapp.WhatsApp"
+  ],
+  "kind": "official",
+  "privacy": "Reads Messages and WhatsApp only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

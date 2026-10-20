@@ -1,0 +1,7 @@
+{
+  "bundle": "com.apple.Music",
+  "name": "Music",
+  "view": {
+    "kind": "media"
+  }
+}

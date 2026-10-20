@@ -1,0 +1,246 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// The Mac keyboard style: VoiceOver's own commands on the TurnOver key, so VO-M is
+// the menu bar and VO-D the Dock whether the TurnOver key is Caps Lock or
+// Control+Option. Listed in reference/apple-docs/voiceover-commands.md, from
+// Apple's VoiceOver User Guide. A global plugin, so in Mac style these come
+// before the NVDA-style bindings they share keys with (VO-P is a paragraph here,
+// not the symbol level). Off in the Windows style.
+import Foundation
+import AppKit
+import ApplicationServices
+
+public final class VoiceOverKeysPlugin: GlobalPlugin {
+    /// The keyboard is in a document or a text area, and the VoiceOver cursor with it.
+    static func inTextArea() -> Bool {
+        guard let f = API.focusObject, f.hasNavigableText, f.role == .document || f.element.role == "AXTextArea",
+              ObjectNavigator.shared.isWithin(f.element), !ObjectNavigator.shared.landedByStep else { return false }
+        // An empty box (Shortcuts' prompt, as it opens) has no characters to move by: VO-Left and VO-Right go on by
+        // item, as VoiceOver's do (the regression pass, 12 Oct 2026: only the edge sound, and no way out).
+        if (f.element.attr(kAXNumberOfCharactersAttribute) as? Int ?? 1) == 0 { return false }
+        return true
+    }
+
+    public required init() {
+        super.init()
+        let cat = "VoiceOver keys"
+        let on: () -> Bool = { config.general.macKeys }
+        func add(_ name: String, _ description: String, _ gestures: [String], _ run: @escaping (KeyboardGesture) -> Void) {
+            script("vo_\(name)", description, gestures: gestures, category: cat, run).isAvailable = on
+        }
+        /// Run another command by name, or say why not.
+        func run(_ name: String, _ g: KeyboardGesture, otherwise: String = "not available here") {
+            if let s = ScriptHandler.findScript(named: name) { s.handler(g) } else { Speech.speakMessage(otherwise) }
+        }
+        /// VO-Command-letter: the next or previous heading, link, control… VoiceOver finds them anywhere, not only
+        /// while reading a page (7 Oct 2026: VO Command Shift H said "not in a document" in Claude's prompt).
+        /// A document's own (browse mode, Word), even while its keys go to the page; else through the window.
+        let windowRoles: [String: Set<String>] = [
+            "Heading": ["AXHeading"], "Link": ["AXLink"], "Table": ["AXTable", "AXGrid"], "List": ["AXList", "AXOutline"], "Graphic": ["AXImage"],
+            "FormField": ["AXTextField", "AXTextArea", "AXCheckBox", "AXRadioButton", "AXPopUpButton", "AXComboBox", "AXSlider", "AXButton", "AXMenuButton", "AXSearchField"],
+        ]
+        func find(_ name: String, _ spoken: String, forward: Bool, _ g: KeyboardGesture) {
+            let scriptName = (forward ? "next" : "previous") + name
+            if let s = ScriptHandler.findScript(named: scriptName) { s.handler(g); return }
+            // The keys were going to the page (focus mode, Claude's prompt): move to the heading, and read on from it.
+            if let d = API.focusTreeInterceptor, let s = d.script(named: scriptName) {
+                if d.passThrough { d.setPassThrough(false, announce: false) }
+                s.handler(g); return
+            }
+            if let roles = windowRoles[name] { ObjectNavigator.shared.findInWindow(roles: roles, forward: forward, kind: spoken); return }
+            Speech.speakMessage("not in a document")
+        }
+
+        add("menuBar", "The application's menus (VO-M); pressed twice, the status menus (VO-M-M)", ["kb:turnover+m"]) { _ in
+            if ScriptHandler.lastScriptRepeatCount > 0 {
+                for m in AXHandler.shared.openMenus.reversed() { _ = AXUIElementPerformAction(m, kAXCancelAction as CFString) }
+                AXHandler.shared.menusClosed()
+                if config.general.windowsKeys { StatusMenus.openList() } else { MenuNavigationPlugin.holdStatusItems() }
+            } else {
+                GlobalCommands.toggleMenus()
+            }
+        }
+        add("dock", "The Dock (VO-D)", ["kb:turnover+d"]) { _ in KeyboardGesture(identifier: "kb:control+f3")?.send() }
+        add("shortcutMenu", "The shortcut menu for the item (VO-Shift-M)", ["kb:turnover+shift+m"]) { _ in if GlobalCommands.openContextMenu() { return }; if SpellingCorrections.offer() { return }; if GlobalCommands.contextMenuAtCaret() { return }; TurnOverObject.contextMenuRequestedAt = Date(); KeyboardGesture(identifier: "kb:control+enter")?.send() }
+        add("keyboardHelp", "Keyboard help: every key says what it does (VO-K)", ["kb:turnover+k"]) { _ in InputManager.toggleInputHelp() }
+        // VO-H (the commands list) is left out: TurnOver+H is Word's next heading, and TurnOver+slash lists the
+        // shortcuts everywhere (4 Oct 2026).
+        add("paragraph", "Reads the paragraph (VO-P)", ["kb:turnover+p"]) { g in run("reportCurrentParagraph", g) }
+        add("sentence", "Reads the sentence (VO-S)", ["kb:turnover+s"]) { g in run("reportCurrentSentence", g) }
+        add("attributes", "Reads the text attributes (VO-T)", ["kb:turnover+t"]) { g in run("reportFormatting", g) }
+        add("repeatLast", "Repeats the last thing spoken (VO-Z)", ["kb:turnover+z"]) { _ in
+            let t = Speech.lastRaw.isEmpty ? Speech.lastSpoken : Speech.lastRaw
+            if t.isEmpty { Speech.speakMessage("nothing spoken yet", remember: false) } else { Speech.speakText(t) }
+        }
+        add("copyLast", "Copies the last thing spoken (VO-Shift-C)", ["kb:turnover+shift+c"]) { _ in Speech.copyLastSpoken() }
+        add("appSummary", "Says the application and its windows; pressed twice, the application chooser (VO-F1, VO-F1-F1)", ["kb:turnover+f1"]) { _ in
+            if ScriptHandler.lastScriptRepeatCount > 0 { DispatchQueue.main.async { ApplicationChooser.open() }; return }
+            guard let pid = API.focusPid, let app = NSRunningApplication(processIdentifier: pid) else { return }
+            let windows = AXUIElementCreateApplication(pid).elements(kAXWindowsAttribute).filter { $0.string(kAXSubroleAttribute) == "AXStandardWindow" }
+            // With its plugins, so you always know what's working in it (the plugin design notes 13).
+            let plugins = ProfilesPlugin.pluginNames(for: app.bundleIdentifier ?? "")
+            // Big Picture's process is "Steam Helper"; to the person it is Steam (a tester, 16 Oct 2026).
+            let name = app.bundleIdentifier == Games.steamHelperBundle ? "Steam" : (app.localizedName ?? "application")
+            Speech.speakMessage("\(name), \(windows.count) \(windows.count == 1 ? "window" : "windows")" + (plugins.isEmpty ? "" : ", plugins: " + plugins.joined(separator: ", ")))
+        }
+        add("windowSummary", "Says the window's title; pressed twice, the window chooser (VO-F2, VO-F2-F2)", ["kb:turnover+f2"]) { g in
+            guard ScriptHandler.lastScriptRepeatCount > 0 else { run("title", g); return }
+            Self.windowChooser()
+        }
+        add("describeItem", "Describes the item with keyboard focus; twice, more about it (in text, where the insertion point is) (VO-F4, VO-F4-F4)", ["kb:turnover+f4"]) { g in
+            if ScriptHandler.lastScriptRepeatCount > 0 { Self.focusDetails(); return }
+            run("reportCurrentFocus", g)
+        }
+        add("dateTime", "The date and time; twice, the battery; three times, the network (VO-F7, VO-F7-F7, VO-F7-F7-F7)", ["kb:turnover+f7"]) { g in
+            if ScriptHandler.lastScriptRepeatCount > 1 { Self.networkStatus(); return }
+            if ScriptHandler.lastScriptRepeatCount > 0 { Speech.speakMessage(GlobalCommands.batteryText()); return }
+            let f = DateFormatter(); f.dateStyle = .full; f.timeStyle = .short
+            Speech.speakMessage(f.string(from: Date()))
+        }
+        add("rotor", "The rotor: headings, links, form controls, landmarks… Left and Right change kind (VO-U)", ["kb:turnover+u"]) { g in
+            if let s = ScriptHandler.findScript(named: "elementsList") { s.handler(g) } else { ItemChooser.openRotor() }
+        }
+        add("itemChooser", "Everything in the window or page, narrowed as you type; Enter goes there (VO-I)", ["kb:turnover+i"]) { _ in
+            ItemChooser.open()
+        }
+        add("quickNav", "Browse mode on or off: single-letter navigation (VO-Q)", ["kb:turnover+q"]) { g in
+            if API.focusTreeInterceptor != nil { run("toggleVirtualBufferPassThrough", g, otherwise: "not in a document") }
+            else { ArrowQuickNav.toggle() }   // outside a document VoiceOver's Quick Nav toggles all the same (the code review, 17 Oct 2026)
+        }
+        add("defaultAction", "Activates the item under the VoiceOver cursor (VO-Space)", ["kb:turnover+space"]) { g in
+            if let d = API.focusTreeInterceptor, !d.passThrough, let s = d.script(named: "activatePosition") { s.handler(g); return }
+            ObjectNavigator.shared.activate()
+        }
+        // The VoiceOver cursor: TurnOver's object navigation. In a page in browse mode, the next and previous line; in
+        // a document or text area with the cursor in it (Word's page, TextEdit), the next and previous character, as
+        // VoiceOver (VO-Left went out to Word's sidebar, 7 Oct 2026).
+        // A table's own moves (Word's cells): the focused object's, or the application module's, which finds the
+        // cell from the live caret (Word keeps its focus on the page while the caret is in a table, so the object
+        // was the page and VO Down moved by line, a tester, 8 Oct 2026).
+        func tableScript(_ name: String) -> Script? {
+            if let s = API.focusObject?.script(named: name) { return s }
+            if let pid = API.focusPid, let s = AppModuleHandler.shared.appModule(for: pid).script(named: name), s.isAvailable?() ?? true { return s }
+            return nil
+        }
+        add("next", "Next item (VO-Right)", ["kb:turnover+rightArrow"]) { g in
+            if let s = tableScript("table_nextColumn") { s.handler(g); return }   // Word: the next cell in the row
+            if let d = API.focusTreeInterceptor, !d.passThrough, ObjectNavigator.shared.isWithin(d.webArea), let s = d.script(named: "moveByLine_forward") { s.handler(g); return }
+            // At the end of the text, VO-Right leaves the field for the next item, as VoiceOver's cursor does (it bumped
+            // for 300 ms at the end of Claude's prompt, 17 Oct 2026).
+            if Self.inTextArea(), let f = API.focusObject, let s = f.script(named: "caret_moveByCharacter") {
+                if let i = try? f.makeTextInfo(.caret), i.storyLength() > 0, i.start >= i.storyLength() { Log.io("VO-Right at the end of the text: the next item") }
+                else { s.handler(KeyboardGesture(identifier: "kb:rightArrow")!); return }
+            }
+            if config.general.navigateByGroups { ObjectNavigator.shared.groupStep(forward: true) } else { ObjectNavigator.shared.next() }
+        }
+        add("previous", "Previous item (VO-Left)", ["kb:turnover+leftArrow"]) { g in
+            if let s = tableScript("table_previousColumn") { s.handler(g); return }
+            if let d = API.focusTreeInterceptor, !d.passThrough, ObjectNavigator.shared.isWithin(d.webArea), let s = d.script(named: "moveByLine_back") { s.handler(g); return }
+            if Self.inTextArea(), let f = API.focusObject, let s = f.script(named: "caret_moveByCharacter") {
+                if let i = try? f.makeTextInfo(.caret), i.start <= 0 { Log.io("VO-Left at the start of the text: the previous item") }
+                else { s.handler(KeyboardGesture(identifier: "kb:leftArrow")!); return }
+            }
+            if config.general.navigateByGroups { ObjectNavigator.shared.groupStep(forward: false) } else { ObjectNavigator.shared.previous() }
+        }
+        // An application's own interact first (Pages: into the table on the caret's line, 17 Oct 2026).
+        func appInteract(_ name: String) -> Script? {
+            guard let pid = API.focusPid, let s = AppModuleHandler.shared.appModule(for: pid).script(named: name), s.isAvailable?() ?? true else { return nil }
+            return s
+        }
+        add("interact", "Into the item: its first part (VO-Shift-Down)", ["kb:turnover+shift+downArrow"]) { g in
+            if let s = appInteract("app_interact") { s.handler(g); return }
+            if config.general.navigateByGroups { ObjectNavigator.shared.interact() } else { ObjectNavigator.shared.firstChild() }
+        }
+        add("stopInteracting", "Out of the item: what holds it (VO-Shift-Up)", ["kb:turnover+shift+upArrow"]) { g in
+            if let s = appInteract("app_stopInteracting") { s.handler(g); return }
+            if config.general.navigateByGroups { ObjectNavigator.shared.stopInteracting() } else { ObjectNavigator.shared.parent() }
+        }
+        // VO-Up and VO-Down: the previous and next line in text or a page; elsewhere the item above or below.
+        for (name, down) in [("up", false), ("down", true)] {
+            add(name, down ? "Next line in text; elsewhere the item below (VO-Down)" : "Previous line in text; elsewhere the item above (VO-Up)", ["kb:turnover+\(name)Arrow"]) { g in
+                // Word: the cell below or above, as VO-Right goes to the next cell (VO-Down left the table, 7 Oct 2026).
+                if let s = tableScript(down ? "table_nextRow" : "table_previousRow") { s.handler(g); return }
+                // Terminal: the lines of output, as VoiceOver reads the screen (VO-Up landed on the window, 8 Oct 2026).
+                if let s = API.focusObject?.script(named: down ? "terminal_reviewNext" : "terminal_reviewPrevious") { s.handler(g); return }
+                let key = KeyboardGesture(identifier: down ? "kb:downArrow" : "kb:upArrow")!
+                if let d = API.focusTreeInterceptor, !d.passThrough, ObjectNavigator.shared.isWithin(d.webArea), let s = d.script(named: down ? "moveByLine_forward" : "moveByLine_back") { s.handler(key); return }
+                if let f = API.focusObject, f.hasNavigableText, ObjectNavigator.shared.isWithin(f.element), let s = f.script(named: "caret_moveByLine") { s.handler(key); return }
+                ObjectNavigator.shared.verticalStep(down: down)
+            }
+        }
+        // In text, VoiceOver's text commands: VO-Home and VO-End the start and end of the text, VO-Shift-Home and
+        // VO-Shift-End the first and last word in view; on a page, its top and bottom; elsewhere the group's first and
+        // last item (the parity audit, 13 Oct 2026: in text they went to the group's items).
+        for (key, last, visible) in [("home", false, false), ("end", true, false), ("shift+home", false, true), ("shift+end", true, true)] {
+            add(visible ? (last ? "lastVisibleWord" : "firstVisibleWord") : (last ? "groupEnd" : "groupStart"),
+                visible ? (last ? "In text, the last word in view; elsewhere the last item in the group (VO-Shift-End)" : "In text, the first word in view; elsewhere the first item in the group (VO-Shift-Home)")
+                        : (last ? "In text, the end of the text; elsewhere the last item in the group (VO-End)" : "In text, the start of the text; elsewhere the first item in the group (VO-Home)"),
+                ["kb:turnover+\(key)"]) { g in
+                if let d = API.focusTreeInterceptor, !d.passThrough, ObjectNavigator.shared.isWithin(d.webArea),
+                   let s = d.script(named: last ? "bottomOfDocument" : "topOfDocument") { s.handler(g); return }
+                if Self.inTextArea() || (API.focusObject?.hasNavigableText ?? false), let f = API.focusObject, ObjectNavigator.shared.isWithin(f.element) {
+                    Self.textEdge(f, last: last, visible: visible); return
+                }
+                ObjectNavigator.shared.groupEdge(last: last)
+            }
+        }
+        add("windowStart", "The first item in the window (VO-Command-Home)", ["kb:turnover+command+home"]) { _ in ObjectNavigator.shared.windowEdge(last: false) }
+        add("windowEnd", "The last item in the window (VO-Command-End)", ["kb:turnover+command+end"]) { _ in ObjectNavigator.shared.windowEdge(last: true) }
+        add("topLevel", "Out to the top level of the window (VO-Shift-Escape)", ["kb:turnover+shift+escape"]) { _ in ObjectNavigator.shared.topLevel() }
+        add("jumpLinked", "Jump to the linked item; jumps to the linked item, such as from the message list to the message (VO-J)", ["kb:turnover+j"]) { _ in ObjectNavigator.shared.jumpLinked() }
+        add("selectItem", "In a text field, starts or stops selecting text; elsewhere selects the list or menu item (VO-Return)", ["kb:turnover+enter"]) { _ in
+            if let f = API.focusObject, f.hasNavigableText, ObjectNavigator.shared.isWithin(f.element) { Self.textSelection(f); return }
+            ObjectNavigator.shared.selectItem()
+        }
+        add("disclosure", "Opens or closes the disclosure triangle (VO-Backslash)", ["kb:turnover+\\"]) { _ in ObjectNavigator.shared.toggleDisclosure() }
+        add("click", "Clicks the item with the mouse; pressed twice, a double click (VO-Shift-Space, VO-Shift-Space-Space)", ["kb:turnover+shift+space"]) { _ in
+            ObjectNavigator.shared.click(double: ScriptHandler.lastScriptRepeatCount > 0)
+        }
+        add("helpTag", "Reads the item's help tag (VO-Shift-H)", ["kb:turnover+shift+h"]) { _ in ObjectNavigator.shared.readHelp() }
+        add("hint", "Reads the hint for the item (VO-Shift-N)", ["kb:turnover+shift+n"]) { g in
+            // Music, Podcasts and TV: what is playing (the app's own script; the table's hint won before, 8 Oct 2026).
+            if let s = ScriptHandler.findScript(named: "media_nowPlaying") { s.handler(g); return }
+            let h = API.focusObject.map { Hints.forObject($0) } ?? ""
+            Speech.speakMessage(h.isEmpty ? "no hint" : h)
+        }
+        add("readWindow", "Reads everything in the window (VO-Shift-W)", ["kb:turnover+shift+w"]) { _ in ObjectNavigator.shared.readWindow() }
+        add("linkAddress", "Reads a link's address (VO-Shift-U)", ["kb:turnover+shift+u"]) { _ in ObjectNavigator.shared.readURL() }
+        add("actions", "The item's actions, to choose from (VO-Command-Space)", ["kb:turnover+command+space"]) { _ in ObjectNavigator.shared.actionsMenu() }
+        add("focusToCursor", "The keyboard focus to the VoiceOver cursor (VO-Command-F4)", ["kb:turnover+command+f4"]) { _ in ObjectNavigator.shared.moveFocusHere() }
+        add("cursorToFocus", "The VoiceOver cursor to the keyboard focus (VO-Shift-F4)", ["kb:turnover+shift+f4"]) { _ in ObjectNavigator.shared.toFocus() }
+        add("closeWindow", "Closes the window (VO-Command-Escape)", ["kb:turnover+command+escape"]) { _ in KeyboardGesture(identifier: "kb:command+w")?.send() }
+        add("passNextKey", "The next key goes to the application untouched (VO-Tab)", ["kb:turnover+tab"]) { _ in
+            InputManager.passNextKey = true
+            Speech.speakMessage("pass next key")
+        }
+        // VoiceOver's web navigation (VO-Command-letter; Shift for previous), in any document TurnOver reads.
+        for (key, name, spoken) in [("h", "Heading", "heading"), ("l", "Link", "link"), ("j", "FormField", "form control"),
+                                    ("t", "Table", "table"), ("x", "List", "list"), ("g", "Graphic", "graphic"),
+                                    // Word's own (VO-Command-M is VoiceOver's same-level heading: comments are in the rotor, 12 Oct 2026)
+                                    ("r", "Revision", "tracked change"), ("e", "SpellingError", "spelling error")] {
+            add("next\(name)", "Next \(spoken) (VO-Command-\(key.uppercased()))", ["kb:turnover+command+\(key)"]) { g in find(name, spoken, forward: true, g) }
+            add("previous\(name)", "Previous \(spoken) (VO-Command-Shift-\(key.uppercased()))", ["kb:turnover+command+shift+\(key)"]) { g in find(name, spoken, forward: false, g) }
+        }
+        // The rest of VoiceOver's commands (VoiceOverParity.swift; 12 Oct 2026).
+        addVoiceOverParity(add, run: { name, g in run(name, g) })
+        addVoiceOverParity2(add)
+        // the decisions on VoiceOver keys TurnOver had given to its own commands (VoiceOverDecisions.swift).
+        addVoiceOverDecisions(add)
+    }
+}
+
+extension VoiceOverKeysPlugin {
+    /// The window chooser (VO-F2-F2; the keypad's Slash).
+    static func windowChooser() {
+        guard let pid = API.focusPid else { return }
+        let windows = AXUIElementCreateApplication(pid).elements(kAXWindowsAttribute)
+        let items = windows.map { w -> MenuItem in
+            let t = w.string(kAXTitleAttribute).flatMap { $0.isEmpty ? nil : $0 } ?? "untitled window"
+            return MenuItem(t, .action {
+                _ = AXUIElementPerformAction(w, kAXRaiseAction as CFString)
+                _ = w.set(kAXMainAttribute, kCFBooleanTrue)
+                AXHandler.shared.refocus(pid: pid)
+            })
+        }
+        DispatchQueue.main.async { TurnOverMenu.shared.openList("Windows", items: items) }
+    }
+}

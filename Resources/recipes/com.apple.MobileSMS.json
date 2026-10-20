@@ -1,0 +1,17 @@
+{
+  "bundle": "com.apple.MobileSMS",
+  "name": "Messages",
+  "view": {
+    "kind": "chat",
+    "chat": {
+      "conversations": "ConversationList",
+      "transcript": "TranscriptCollectionView",
+      "composer": "messageBodyField",
+      "title": "ConversationTitle",
+      "message": {},
+      "conversation": {
+        "role": "AXStaticText"
+      }
+    }
+  }
+}

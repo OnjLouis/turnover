@@ -1,0 +1,7 @@
+{
+  "bundle": "com.apple.podcasts",
+  "name": "Podcasts",
+  "view": {
+    "kind": "media"
+  }
+}

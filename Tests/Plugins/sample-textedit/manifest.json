@@ -1,0 +1,10 @@
+{
+  // A sample plugin with tests: TurnOver's build runs them (docs/PLUGIN-TOOLKIT-PLAN.md, item 5).
+  "id": "sample-textedit",
+  "name": "Sample for TextEdit",
+  "version": "1",
+  "author": "TurnOver",
+  "apps": ["com.apple.TextEdit"],
+  "kind": "profile",
+  "formatVersion": 1,
+}

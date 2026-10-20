@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>TurnOver freeze test, repeating</title></head>
+<body>
+<h1>TurnOver freeze test, repeating</h1>
+<p>This page freezes for 10 seconds, then works for 10 seconds, over and over, for two minutes. Just read it with the
+arrow keys, Tab, and Command Tab away and back. Whenever it is frozen, TurnOver should say "Safari not responding"
+once, and keep answering your keys.</p>
+<p id="status">Starting.</p>
+<h2>Some text to read</h2>
+<p>Line one of some text to read.</p>
+<p>Line two of some text to read.</p>
+<p>Line three of some text to read.</p>
+<p>Line four of some text to read.</p>
+<p>Line five of some text to read.</p>
+<p><a href="#top">A link to land on</a></p>
+<p><button>A button to land on</button></p>
+<script>
+let rounds = 0;
+function cycle() {
+  if (rounds++ >= 6) { document.getElementById('status').textContent = 'Finished: no more freezing.'; return; }
+  document.getElementById('status').textContent = 'Frozen now (round ' + rounds + ' of 6).';
+  const end = Date.now() + 10000;
+  while (Date.now() < end) { }
+  document.getElementById('status').textContent = 'Working now (round ' + rounds + ' of 6).';
+  setTimeout(cycle, 10000);
+}
+setTimeout(cycle, 5000);
+</script>
+</body>
+</html>

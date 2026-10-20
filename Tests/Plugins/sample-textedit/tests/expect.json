@@ -1,0 +1,4 @@
+[
+  { "name": "the proxy icon is named", "screen": "screen-1.json", "item": { "role": "AXImage" }, "says": "^Document icon, button" },
+  { "name": "the text is not", "screen": "screen-1.json", "notSays": "Document icon" },
+]

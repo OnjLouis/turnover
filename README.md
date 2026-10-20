@@ -1,0 +1,91 @@
+# TurnOver
+
+A screen reader for the Mac that works alongside VoiceOver.
+
+Free and open source, made in spare time. If it helps you, [tip on Ko-fi](https://ko-fi.com/oliverkennett), no account
+needed. GitHub Sponsors is coming.
+
+VoiceOver stays on. TurnOver reads every app by default, with its own voice, and with the keys you already know:
+VoiceOver's in the Mac style, NVDA's in the Windows style. VoiceOver always handles passwords and macOS's own security
+prompts. Command Control Shift T gives the app in front back to VoiceOver whenever you'd rather it read.
+
+Word was the reason it exists: writing in Microsoft Word on a Mac, with a screen reader that keeps up.
+
+## The deal: a spare-time project
+
+TurnOver is made by one blind developer, in spare time, and given away under the GPL. It works, and it's what I use
+every day. But:
+
+- **It's provided as-is.** No warranty, no support promise, no roadmap commitment.
+- **Requests are welcome, and weighed, not queued.** Replies may take a week or two, or not come at all.
+- **Fixes are the fastest way to get something changed.** See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Supporting TurnOver
+
+If TurnOver is useful to you and you'd like to help cover its running costs, there's
+[Ko-fi](https://ko-fi.com/oliverkennett), a one-off or monthly tip with no account needed; TurnOver's menu has Support
+TurnOver, which opens it. GitHub Sponsors is coming once GitHub has approved the project's profile.
+
+## Installing
+
+Download the latest build from the [releases page](https://doll-eye.github.io/turnover-updates/). It runs on macOS 14
+or later, on Apple silicon and Intel Macs. Move TurnOver to Applications and open it; a welcome explains the two
+permissions macOS asks for (Accessibility and Input Monitoring). TurnOver updates itself.
+
+The [guides](https://doll-eye.github.io/turnover-updates/guide.html) cover getting started, the keys, reading, the
+apps, the keyboard styles and troubleshooting.
+
+The two keys to remember:
+
+- **Command Control Comma** is the way in to everything: then M for the menu, S for settings, T to switch the app in
+  front between TurnOver and VoiceOver, H for help. Any other key lists the letters.
+- **Command Control Period** turns TurnOver off and on, from anywhere.
+
+## Reporting a problem
+
+Use the [issue form](../../issues/new/choose). Say what you were doing, what happened and what you expected. TurnOver's
+menu has Send feedback, which saves a report you can attach; the log never keeps what you type, and you choose whether
+it keeps what was read.
+
+## Building it yourself
+
+You need a Mac with Xcode 26 installed (the command line tools alone aren't enough: some of Apple's headers only build
+with the full Xcode). The finished app runs on macOS 14 or later.
+
+```bash
+git clone https://github.com/TurnOver-For-Mac/turnover.git
+cd turnover
+./build.sh --no-install
+```
+
+That compiles everything, runs the unit tests, and leaves TurnOver.app in ~/Library/Developer/TurnOver/build. Plain
+`./build.sh` also installs it as /Applications/TurnOver.app and restarts it, replacing the TurnOver you have. Without a
+signing certificate the app is signed ad hoc; macOS then asks for Accessibility and Input Monitoring again, because
+the permissions belong to a signature.
+
+The tests are a program of their own (`swift test` isn't used); `./build.sh --no-install` runs them, and so does:
+
+```bash
+~/Library/Developer/TurnOver/build/release/turnover-tests -v
+```
+
+A fork that publishes its own builds must change `SUFeedURL` and `SUPublicEDKey` in Resources/Info.plist: otherwise its
+copies offer TurnOver's own updates.
+
+## Finding your way around the code
+
+- [ARCHITECTURE.md](ARCHITECTURE.md): the map from each mechanism to its files and tests.
+- [TESTING.md](TESTING.md): the unit tests, recorded windows (fixtures) and the key driver.
+- [PATTERNS.md](PATTERNS.md): how Mac apps misbehave for screen readers, and TurnOver's answers.
+- [PLUGIN-GUIDE.md](PLUGIN-GUIDE.md): plugins, the reading rules and keys for an app, written as data.
+
+The design borrows NVDA's object model (objects, text ranges, app modules, global plugins) and VoiceOver's keys. It
+contains no code from either; see [NOTICE.md](NOTICE.md).
+
+## Licence
+
+TurnOver is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+See [LICENSE](LICENSE). Copyright 2026 Oliver Kennett and contributors.
+
+The released builds are signed and notarised by the project. Copies built by others are theirs, not the project's.

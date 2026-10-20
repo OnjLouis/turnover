@@ -1,0 +1,20 @@
+{
+  "id": "official-word",
+  "name": "Microsoft Word",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Word documents read and edited as NVDA does on Windows: pages, tables, comments, tracked changes, spelling and formatting.",
+  "description": "Reading and writing in Word: page announcements, table moves by row and column, comments, tracked changes, next spelling error, headings, and formatting reports, with VoiceOver's and NVDA's keys.",
+  "apps": [
+    "com.microsoft.Word"
+  ],
+  "kind": "official",
+  "privacy": "Reads Microsoft Word only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

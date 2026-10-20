@@ -1,0 +1,20 @@
+{
+  "id": "official-excel",
+  "name": "Microsoft Excel",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Excel sheets: the cell you're on, with its row and column, as you move.",
+  "description": "Reading Excel's grid: the cell, its row and column, and selection changes, where Excel only reports them late.",
+  "apps": [
+    "com.microsoft.Excel"
+  ],
+  "kind": "official",
+  "privacy": "Reads Microsoft Excel only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

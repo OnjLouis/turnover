@@ -1,0 +1,30 @@
+{
+  "bundle": "com.hnc.Discord",
+  "name": "Discord",
+  "view": {
+    "kind": "chat",
+    "chat": {
+      "conversations": "discord.channels",
+      "transcript": "discord.messages",
+      "composer": "discord.box",
+      "title": "discord.title",
+      "match": {
+        "conversations": { "any": [
+          { "role": "AXList", "description": "Channels" },
+          { "role": "AXList", "description": "Direct Messages" },
+          { "role": "AXList", "description": "Private channels" }
+        ] },
+        "transcript": { "role": "AXList", "description": "Messages in *" },
+        "composer": { "role": "AXTextArea", "description": "Message *" },
+        "title": { "role": "AXWebArea" }
+      },
+      "message": { "any": [
+        { "subrole": "AXDocumentArticle" },
+        { "role": "AXSplitter" }
+      ] },
+      "conversation": { "any": [
+        { "role": "AXLink" }
+      ] }
+    }
+  }
+}

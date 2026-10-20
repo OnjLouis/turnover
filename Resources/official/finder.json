@@ -1,0 +1,20 @@
+{
+  "id": "official-finder",
+  "name": "Finder",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Finder's lists and columns read clearly, with file details.",
+  "description": "Finder: list, column and icon views read clearly, file kinds and details, and moving in and out of folders.",
+  "apps": [
+    "com.apple.finder"
+  ],
+  "kind": "official",
+  "privacy": "Reads Finder only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

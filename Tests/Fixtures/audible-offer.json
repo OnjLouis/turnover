@@ -1,0 +1,1392 @@
+{
+  "app" : "Audible",
+  "application" : 15,
+  "bundle" : "com.audible.iphone",
+  "focus" : 1,
+  "nodes" : [
+    {
+      "actions" : [
+        "AXRaise"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            293,
+            58
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            2,
+            4,
+            3,
+            5,
+            1
+          ]
+        },
+        "AXCloseButton" : {
+          "e" : 2
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            223,
+            44,
+            1024,
+            796
+          ]
+        },
+        "AXFullScreen" : {
+          "b" : false
+        },
+        "AXFullScreenButton" : {
+          "e" : 3
+        },
+        "AXIdentifier" : {
+          "s" : "SceneWindow"
+        },
+        "AXMain" : {
+          "b" : true
+        },
+        "AXMinimizeButton" : {
+          "e" : 4
+        },
+        "AXMinimized" : {
+          "b" : false
+        },
+        "AXModal" : {
+          "b" : false
+        },
+        "AXParent" : {
+          "e" : 15
+        },
+        "AXPosition" : {
+          "pt" : [
+            223,
+            44
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXWindow"
+        },
+        "AXRoleDescription" : {
+          "s" : "standard window"
+        },
+        "AXSize" : {
+          "sz" : [
+            1024,
+            796
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXStandardWindow"
+        },
+        "AXTitle" : {
+          "s" : "Aaaaaaa"
+        },
+        "AXTitleUIElement" : {
+          "e" : 5
+        },
+        "AXZoomButton" : {
+          "e" : 3
+        }
+      },
+      "id" : 0,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            6
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            6
+          ]
+        },
+        "AXFocused" : {
+          "b" : true
+        },
+        "AXFrame" : {
+          "rc" : [
+            223,
+            72,
+            1024,
+            768
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            223,
+            72
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSize" : {
+          "sz" : [
+            1024,
+            768
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "iOSContentGroup"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 1,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXEdited" : {
+          "b" : false
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            233,
+            51,
+            12,
+            14
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            233,
+            51
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "close button"
+        },
+        "AXSize" : {
+          "sz" : [
+            12,
+            14
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXCloseButton"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 2,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXZoomWindow",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            7
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            273,
+            51,
+            12,
+            14
+          ]
+        },
+        "AXHelp" : {
+          "s" : "aaaa aaaaaa aaaa aaa aa aaaaaa aa aaaa aaa aaaaaa"
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            273,
+            51
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "full screen button"
+        },
+        "AXSize" : {
+          "sz" : [
+            12,
+            14
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXFullScreenButton"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 3,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            253,
+            51,
+            12,
+            14
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            253,
+            51
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "minimise button"
+        },
+        "AXSize" : {
+          "sz" : [
+            12,
+            14
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXMinimizeButton"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 4,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            708,
+            49,
+            54,
+            16
+          ]
+        },
+        "AXInsertionPointLineNumber" : {
+          "n" : 0
+        },
+        "AXNumberOfCharacters" : {
+          "n" : 7
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            708,
+            49
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXStaticText"
+        },
+        "AXRoleDescription" : {
+          "s" : "text"
+        },
+        "AXSelectedTextRange" : {
+          "rg" : [
+            0,
+            0
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            54,
+            16
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXValue" : {
+          "s" : "Aaaaaaa"
+        },
+        "AXVisibleCharacterRange" : {
+          "rg" : [
+            0,
+            7
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 5,
+      "params" : [
+        "AXLineForIndex",
+        "AXRangeForLine",
+        "AXBoundsForRange",
+        "AXStringForRange",
+        "AXAttributedStringForRange",
+        "AXRangeForPosition",
+        "AXRangeForIndex",
+        "AXStyleRangeForIndex",
+        "AXReplaceRangeWithText",
+        "AXRTFForRange"
+      ]
+    },
+    {
+      "actions" : [
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            735.0500000000001,
+            456.23
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+            8
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            8
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            223,
+            72,
+            1024.1000000000001,
+            768.46
+          ]
+        },
+        "AXParent" : {
+          "e" : 1
+        },
+        "AXPosition" : {
+          "pt" : [
+            223,
+            72
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSize" : {
+          "sz" : [
+            1024.1000000000001,
+            768.46
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "es" : [
+
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 6,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            16
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            16
+          ]
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            272,
+            50,
+            14,
+            16
+          ]
+        },
+        "AXParent" : {
+          "e" : 3
+        },
+        "AXPosition" : {
+          "pt" : [
+            272,
+            50
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSize" : {
+          "sz" : [
+            14,
+            16
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 7,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            735.0500000000001,
+            456.23
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            223,
+            72,
+            1024.1000000000001,
+            768.46
+          ]
+        },
+        "AXParent" : {
+          "e" : 6
+        },
+        "AXPosition" : {
+          "pt" : [
+            223,
+            72
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSize" : {
+          "sz" : [
+            1024.1000000000001,
+            768.46
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "es" : [
+
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 8,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            852.09,
+            384.235
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXDescription" : {
+          "s" : "aaaaa"
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            847.085,
+            379.23,
+            10.009999999999991,
+            10.009999999999991
+          ]
+        },
+        "AXParent" : {
+          "e" : 8
+        },
+        "AXPosition" : {
+          "pt" : [
+            847.085,
+            379.23
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "button"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSize" : {
+          "sz" : [
+            10.009999999999991,
+            10.009999999999991
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "ss" : [
+            "aaaaa"
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 9,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            735.0500000000001,
+            415.4200000000001
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXDescription" : {
+          "s" : "Aaaa aa aaa aaaa"
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            659.975,
+            402.71500000000003,
+            150.14999999999998,
+            25.409999999999968
+          ]
+        },
+        "AXNumberOfCharacters" : {
+          "n" : 16
+        },
+        "AXParent" : {
+          "e" : 8
+        },
+        "AXPosition" : {
+          "pt" : [
+            659.975,
+            402.71500000000003
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXHeading"
+        },
+        "AXRoleDescription" : {
+          "s" : "heading"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSelectedText" : {
+          "s" : ""
+        },
+        "AXSelectedTextRange" : {
+          "rg" : [
+            0,
+            0
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            150.14999999999998,
+            25.409999999999968
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "ss" : [
+            "Aaaa aa aaa aaaa"
+          ]
+        },
+        "AXVisibleCharacterRange" : {
+          "rg" : [
+            0,
+            16
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 10,
+      "params" : [
+        "AXTextMarkerRangeForUIElement",
+        "AXNextLineRangeForIndex",
+        "AXLineForIndex",
+        "AXIndexForTextMarker",
+        "AXReplaceRangeWithText",
+        "AXBoundsForRange",
+        "AXStringForRange",
+        "AXRangeForLine",
+        "AXRangeForTextMarker",
+        "AXAttributedStringForRange",
+        "AXPreviousLineRangeForIndex",
+        "AXUIElementForTextMarker",
+        "AXLineRangeForIndex"
+      ]
+    },
+    {
+      "actions" : [
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            735.0500000000001,
+            448.915
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+            14
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            14
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            611.85,
+            434.2850000000001,
+            246.39999999999998,
+            29.25999999999999
+          ]
+        },
+        "AXParent" : {
+          "e" : 8
+        },
+        "AXPosition" : {
+          "pt" : [
+            611.85,
+            434.2850000000001
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSize" : {
+          "sz" : [
+            246.39999999999998,
+            29.25999999999999
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "es" : [
+
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 11,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            735.0500000000001,
+            491.265
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXDescription" : {
+          "s" : "Aaa, aaaaaa"
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            611.85,
+            475.865,
+            246.39999999999998,
+            30.80000000000001
+          ]
+        },
+        "AXParent" : {
+          "e" : 8
+        },
+        "AXPosition" : {
+          "pt" : [
+            611.85,
+            475.865
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "button"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSize" : {
+          "sz" : [
+            246.39999999999998,
+            30.80000000000001
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "ss" : [
+            "Aaa, aaaaaa"
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 12,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            735.0500000000001,
+            528.225
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXDescription" : {
+          "s" : "Aaaaa aaaaa"
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            702.71,
+            520.9100000000001,
+            64.67999999999995,
+            14.629999999999995
+          ]
+        },
+        "AXParent" : {
+          "e" : 8
+        },
+        "AXPosition" : {
+          "pt" : [
+            702.71,
+            520.9100000000001
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "button"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSize" : {
+          "sz" : [
+            64.67999999999995,
+            14.629999999999995
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "ss" : [
+            "Aaaaa aaaaa"
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 13,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXScrollToVisible",
+        "AXCancel",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            726.3875,
+            448.915
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXDescription" : {
+          "s" : "Aaaa aa aaa aaaaaa aaaaa aaaa aaaaaaa aaa aaa aaaaaaaa?"
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            611.85,
+            434.2850000000001,
+            229.07500000000005,
+            29.25999999999999
+          ]
+        },
+        "AXNumberOfCharacters" : {
+          "n" : 55
+        },
+        "AXParent" : {
+          "e" : 11
+        },
+        "AXPosition" : {
+          "pt" : [
+            611.85,
+            434.2850000000001
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXStaticText"
+        },
+        "AXRoleDescription" : {
+          "s" : "text"
+        },
+        "AXSelected" : {
+          "b" : false
+        },
+        "AXSelectedText" : {
+          "s" : ""
+        },
+        "AXSelectedTextRange" : {
+          "rg" : [
+            0,
+            0
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            229.07500000000005,
+            29.25999999999999
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXUserInputLabels" : {
+          "ss" : [
+            "Aaaa aa aaa aaaaaa aaaaa aaaa aaaaaaa aaa aaa aaaaaaaa?"
+          ]
+        },
+        "AXVisibleCharacterRange" : {
+          "rg" : [
+            0,
+            55
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 14,
+      "params" : [
+        "AXTextMarkerRangeForUIElement",
+        "AXNextLineRangeForIndex",
+        "AXLineForIndex",
+        "AXIndexForTextMarker",
+        "AXReplaceRangeWithText",
+        "AXBoundsForRange",
+        "AXStringForRange",
+        "AXRangeForLine",
+        "AXRangeForTextMarker",
+        "AXAttributedStringForRange",
+        "AXPreviousLineRangeForIndex",
+        "AXUIElementForTextMarker",
+        "AXLineRangeForIndex"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            0
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            17,
+            0
+          ]
+        },
+        "AXEnhancedUserInterface" : {
+          "b" : false
+        },
+        "AXFocusedUIElement" : {
+          "e" : 1
+        },
+        "AXFocusedWindow" : {
+          "e" : 0
+        },
+        "AXFrontmost" : {
+          "b" : false
+        },
+        "AXFunctionRowTopLevelElements" : {
+          "es" : [
+
+          ]
+        },
+        "AXHidden" : {
+          "b" : false
+        },
+        "AXMainWindow" : {
+          "e" : 0
+        },
+        "AXMenuBar" : {
+          "e" : 17
+        },
+        "AXPreferredLanguage" : {
+          "s" : "aa-AA"
+        },
+        "AXRole" : {
+          "s" : "AXApplication"
+        },
+        "AXRoleDescription" : {
+          "s" : "application"
+        },
+        "AXTitle" : {
+          "s" : "Aaaaaaa"
+        },
+        "AXWindows" : {
+          "es" : [
+            0
+          ]
+        }
+      },
+      "id" : 15,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            272,
+            50,
+            14,
+            16
+          ]
+        },
+        "AXParent" : {
+          "e" : 7
+        },
+        "AXPosition" : {
+          "pt" : [
+            272,
+            50
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSize" : {
+          "sz" : [
+            14,
+            16
+          ]
+        }
+      },
+      "id" : 16,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXCancel"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFrame" : {
+          "rc" : [
+            0,
+            0,
+            1470,
+            33
+          ]
+        },
+        "AXParent" : {
+          "e" : 1
+        },
+        "AXPosition" : {
+          "pt" : [
+            0,
+            0
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXMenuBar"
+        },
+        "AXSelectedChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            1470,
+            33
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 17
+        },
+        "AXVisibleChildren" : {
+          "es" : [
+
+          ]
+        }
+      },
+      "id" : 17,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    }
+  ],
+  "recorded" : "2026-10-11T14:46:52Z",
+  "root" : 0
+}

@@ -1,0 +1,20 @@
+{
+  "id": "official-terminal",
+  "name": "Terminal",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Terminal's output read as it arrives, with review of what's on screen.",
+  "description": "Terminal: new output spoken as it comes, progress lines handled, and the screen reviewable by line, word and character.",
+  "apps": [
+    "com.apple.Terminal"
+  ],
+  "kind": "official",
+  "privacy": "Reads Terminal only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "official-safari",
+  "name": "Safari",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "Web pages in Safari with browse mode, quick keys and focus mode, as NVDA reads pages.",
+  "description": "Safari: pages read in browse mode with single-letter quick keys, focus mode for forms, page loading announced, and positions remembered.",
+  "apps": [
+    "com.apple.Safari"
+  ],
+  "kind": "official",
+  "privacy": "Reads Safari only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}

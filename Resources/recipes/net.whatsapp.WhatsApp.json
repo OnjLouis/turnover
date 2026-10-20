@@ -1,0 +1,52 @@
+{
+  "bundle": "net.whatsapp.WhatsApp",
+  "name": "WhatsApp",
+  "view": {
+    "kind": "chat",
+    "chat": {
+      "conversations": "ChatListView_TableView",
+      "transcript": "ChatMessagesTableView",
+      "composer": "ChatBar_ComposerTextView",
+      "title": "NavigationBar_HeaderViewButton",
+      "sectionsPrefix": "SidebarButton_",
+      "searchField": "TokenizedSearchBar_TextView",
+      "resultsPrefix": "ChatListSearchView_",
+      "saysSent": true,
+      "message": {
+        "roles": [
+          "AXStaticText",
+          "AXHeading"
+        ]
+      },
+      "conversation": {
+        "any": [
+          {
+            "role": "AXButton",
+            "identifier": ""
+          },
+          {
+            "roles": [
+              "AXGroup",
+              "AXButton"
+            ],
+            "identifier": "ChatListSearchView_*Result"
+          },
+          {
+            "role": "AXStaticText",
+            "identifier": "",
+            "parent": {
+              "identifier": "ChatListView_TableView"
+            }
+          },
+          {
+            "role": "AXStaticText",
+            "identifier": "",
+            "parent": {
+              "identifier": "WAArchivedChatsViewController"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

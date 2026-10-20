@@ -1,0 +1,130 @@
+{
+  "labels": [
+    {
+      "match": {
+        "role": "image",
+        "unnamed": true,
+        "pressable": true,
+        "parent": {
+          "role": "group",
+          "parent": {
+            "description": "homepage",
+            "text": "Login*"
+          }
+        }
+      },
+      "name": "Account",
+      "role": "button"
+    },
+    {
+      "match": {
+        "role": "image",
+        "unnamed": true,
+        "pressable": true,
+        "inside": {
+          "description": "homepage"
+        }
+      },
+      "nameFrom": "nextText",
+      "role": "button"
+    },
+    {
+      "match": {
+        "role": "group",
+        "unnamed": true,
+        "pressable": true,
+        "inside": {
+          "description": "homepage"
+        }
+      },
+      "nameFrom": "nextText",
+      "role": "button"
+    },
+    {
+      "match": {
+        "role": "text field",
+        "inside": {
+          "description": "homepage"
+        }
+      },
+      "name": "Search models"
+    },
+    {
+      "match": {
+        "role": "button",
+        "unnamed": true,
+        "help": "*",
+        "window": "*"
+      },
+      "nameFrom": "help"
+    },
+    {
+      "match": {
+        "role": "text field",
+        "help": "*"
+      },
+      "nameFrom": "help"
+    },
+    {
+      "match": {
+        "role": "check box",
+        "unnamed": true,
+        "help": "*"
+      },
+      "nameFrom": "help"
+    },
+    {
+      "match": {
+        "role": "button",
+        "unnamed": true
+      },
+      "nameFrom": "nextText"
+    },
+    {
+      "match": {
+        "role": "check box",
+        "unnamed": true
+      },
+      "nameFrom": "nextText"
+    }
+  ],
+  "keys": [
+    {
+      "key": "bosun+shift+n",
+      "description": "New project",
+      "action": "menu",
+      "menu": [
+        "File",
+        "New Project"
+      ]
+    },
+    {
+      "key": "bosun+control+o",
+      "description": "Open a project",
+      "action": "menu",
+      "menu": [
+        "File",
+        "Open Project*"
+      ]
+    }
+  ],
+  "silence": [
+    {
+      "role": "image",
+      "unnamed": true,
+      "pressable": false,
+      "inside": {
+        "description": "homepage"
+      }
+    },
+    {
+      "role": "image",
+      "description": "No Image"
+    },
+    {
+      "role": "group",
+      "subrole": "AXEmptyGroup",
+      "unnamed": true
+    }
+  ]
+}

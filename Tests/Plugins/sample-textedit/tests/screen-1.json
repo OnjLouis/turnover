@@ -1,0 +1,1383 @@
+{
+  "app" : "TextEdit",
+  "application" : 17,
+  "bundle" : "com.apple.TextEdit",
+  "focus" : 8,
+  "nodes" : [
+    {
+      "actions" : [
+        "AXRaise"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            205,
+            116
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            2,
+            4,
+            3,
+            6,
+            7,
+            5,
+            1
+          ]
+        },
+        "AXCloseButton" : {
+          "e" : 2
+        },
+        "AXDocument" : {
+          "s" : "file:\/\/\/Users\/user\/Documents\/TurnOver%20Beta%20Guide.txt"
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            175,
+            100,
+            656,
+            422
+          ]
+        },
+        "AXFullScreen" : {
+          "b" : false
+        },
+        "AXFullScreenButton" : {
+          "e" : 3
+        },
+        "AXIdentifier" : {
+          "s" : "_NS:31"
+        },
+        "AXMain" : {
+          "b" : true
+        },
+        "AXMinimizeButton" : {
+          "e" : 4
+        },
+        "AXMinimized" : {
+          "b" : false
+        },
+        "AXModal" : {
+          "b" : false
+        },
+        "AXParent" : {
+          "e" : 17
+        },
+        "AXPosition" : {
+          "pt" : [
+            175,
+            100
+          ]
+        },
+        "AXProxy" : {
+          "e" : 6
+        },
+        "AXRole" : {
+          "s" : "AXWindow"
+        },
+        "AXRoleDescription" : {
+          "s" : "standard window"
+        },
+        "AXSize" : {
+          "sz" : [
+            656,
+            422
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXStandardWindow"
+        },
+        "AXTitle" : {
+          "s" : "TurnOver Beta Guide.txt"
+        },
+        "AXTitleUIElement" : {
+          "e" : 7
+        },
+        "AXZoomButton" : {
+          "e" : 3
+        }
+      },
+      "id" : 0,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXScrollLeftByPage",
+        "AXScrollRightByPage",
+        "AXScrollUpByPage",
+        "AXScrollDownByPage"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            8,
+            9,
+            10
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            9,
+            8,
+            10
+          ]
+        },
+        "AXContentSize" : {
+          "sz" : [
+            656,
+            6195.5
+          ]
+        },
+        "AXContents" : {
+          "es" : [
+            8
+          ]
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            175,
+            132,
+            656,
+            390
+          ]
+        },
+        "AXHorizontalScrollBar" : {
+          "e" : 9
+        },
+        "AXIdentifier" : {
+          "s" : "_NS:8"
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            175,
+            132
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXScrollArea"
+        },
+        "AXRoleDescription" : {
+          "s" : "scroll area"
+        },
+        "AXSize" : {
+          "sz" : [
+            656,
+            390
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXVerticalScrollBar" : {
+          "e" : 10
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 1,
+      "params" : [
+        "AXReplaceRangeWithText",
+        "AXScrollToShowDescendant"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXEdited" : {
+          "b" : false
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            183,
+            108,
+            16,
+            16
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            183,
+            108
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "close button"
+        },
+        "AXSize" : {
+          "sz" : [
+            16,
+            16
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXCloseButton"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 2,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXZoomWindow",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            11
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            229,
+            108,
+            16,
+            16
+          ]
+        },
+        "AXHelp" : {
+          "s" : "this button also has an action to zoom the window"
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            229,
+            108
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "full screen button"
+        },
+        "AXSize" : {
+          "sz" : [
+            16,
+            16
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXFullScreenButton"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 3,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            206,
+            108,
+            16,
+            16
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            206,
+            108
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "minimise button"
+        },
+        "AXSize" : {
+          "sz" : [
+            16,
+            16
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXMinimizeButton"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 4,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress",
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXDescription" : {
+          "s" : "document actions"
+        },
+        "AXEnabled" : {
+          "b" : false
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            435,
+            107,
+            12,
+            18
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            435,
+            107
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXMenuButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "menu button"
+        },
+        "AXSize" : {
+          "sz" : [
+            12,
+            18
+          ]
+        },
+        "AXTitle" : {
+          "s" : ""
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 5,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            256,
+            106,
+            18,
+            18
+          ]
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            256,
+            106
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXImage"
+        },
+        "AXRoleDescription" : {
+          "s" : "image"
+        },
+        "AXSize" : {
+          "sz" : [
+            18,
+            18
+          ]
+        },
+        "AXTitle" : {
+          "s" : "TurnOver Beta Guide.txt"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 6,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            275,
+            108,
+            161,
+            16
+          ]
+        },
+        "AXInsertionPointLineNumber" : {
+          "n" : 0
+        },
+        "AXNumberOfCharacters" : {
+          "n" : 23
+        },
+        "AXParent" : {
+          "e" : 0
+        },
+        "AXPosition" : {
+          "pt" : [
+            275,
+            108
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXStaticText"
+        },
+        "AXRoleDescription" : {
+          "s" : "text"
+        },
+        "AXSelectedTextRange" : {
+          "rg" : [
+            0,
+            0
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            161,
+            16
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXValue" : {
+          "s" : "TurnOver Beta Guide.txt"
+        },
+        "AXVisibleCharacterRange" : {
+          "rg" : [
+            0,
+            23
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 7,
+      "params" : [
+        "AXLineForIndex",
+        "AXRangeForLine",
+        "AXBoundsForRange",
+        "AXStringForRange",
+        "AXAttributedStringForRange",
+        "AXRangeForPosition",
+        "AXRangeForIndex",
+        "AXStyleRangeForIndex",
+        "AXReplaceRangeWithText",
+        "AXRTFForRange"
+      ]
+    },
+    {
+      "actions" : [
+        "AXShowMenu"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXFocused" : {
+          "b" : true
+        },
+        "AXFrame" : {
+          "rc" : [
+            175,
+            132,
+            656,
+            6195.5
+          ]
+        },
+        "AXIdentifier" : {
+          "s" : "First Text View"
+        },
+        "AXInsertionPointLineNumber" : {
+          "n" : 0
+        },
+        "AXNumberOfCharacters" : {
+          "n" : 21335
+        },
+        "AXParent" : {
+          "e" : 1
+        },
+        "AXPosition" : {
+          "pt" : [
+            175,
+            132
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXTextArea"
+        },
+        "AXRoleDescription" : {
+          "s" : "text entry area"
+        },
+        "AXSelectedText" : {
+          "s" : ""
+        },
+        "AXSelectedTextRange" : {
+          "rg" : [
+            0,
+            0
+          ]
+        },
+        "AXSharedCharacterRange" : {
+          "rg" : [
+            0,
+            21335
+          ]
+        },
+        "AXSharedTextUIElements" : {
+          "es" : [
+            8
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            656,
+            6195.5
+          ]
+        },
+        "AXTextInputMarkedRange" : {
+          "rg" : [
+            21335,
+            0
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXValue" : {
+          "s" : "TURNOVER 1.0 BETA 1: A GUIDE FOR TESTERS\n\nTurnOver is a screen reader for the Mac, built in the shape of NVDA, that works alongside VoiceOver.\nThis beta supports three applications: Mail, Safari and Terminal, with Microsoft Word, Finder, the App Store,\nMusic, Podcasts, TV, Messages, WhatsApp, Claude and TextEdit as previews that you turn on if you want to try\nthem (TurnOver menu, Preferences, Applications). When one of them comes to the front,\nTurnOver switches VoiceOver off and takes over; when you leave it, VoiceOver comes back. Every other\napplication stays with VoiceOver. It runs on macOS 14 or later, on Apple silicon and Intel Macs.\n\nThis is a proof of concept. Thank you for testing it. Please tell us what goes wrong (see SENDING\nFEEDBACK below).\n\n\nGETTING STARTED\n\n1. Copy TurnOver to your Applications folder and open it. A welcome message explains the permissions.\n2. TurnOver needs two permissions. In System Settings, Privacy and Security, turn TurnOver on under\n   Accessibility (called Device Control and Data Access on macOS 27), and under Input Monitoring. macOS asks\n   for the first; if it doesn't ask for the second, TurnOver shows you where it is.\n3. Switch to Mail, Safari or Terminal. VoiceOver goes off, TurnOver says \"TurnOver on\", and reads.\n\nTurnOver updates itself: once a day it checks for a new build, says \"A TurnOver update is available\", and\nopens a window where you choose Install Update or Skip. TurnOver menu, Updates: check now, turn the daily\ncheck off, or turn on \"Download and install updates automatically\" (the update then installs next time TurnOver\nquits, or straight away from that menu). Your permissions carry over to each update. Updates, What's new, lists\nevery build's changes, including which reported problems are fixed. After an update, TurnOver tells you how\nmany new things there are to try, and lists them in the TurnOver menu under New to try.\n\nTurnOver can open when you log in: TurnOver menu, Preferences, General, Open TurnOver at login. While it is\nrunning it has an item in the menu bar, called TurnOver.\n\n\nYOUR TESTER KEY\n\nTurnOver is a closed beta. Each tester has a personal key, sent by email. The first time TurnOver starts, it asks for it: open the link in the email (TurnOver takes the key by itself), or copy the key and paste it into the box with Command V. Until then VoiceOver carries on as usual.\nEach beta build works for 90 days from the day it was made; every update starts that again. TurnOver menu, Tester key says whose key it is and until when this build works. Please keep your key to yourself.\n\nTHE KEYS THAT MATTER\n\nThe TurnOver key is Caps Lock, or Control and Option together (VoiceOver's VO keys): hold either and press\nanother key. (Pressed twice on its own, Caps Lock still turns capitals on and off.) In the lists below,\n\"TurnOver\" means Caps Lock or VO.\n\n  TurnOver N            The TurnOver menu: preferences, feedback, quit. Up and Down move; Right or Return opens\n                        a submenu or changes a setting; on a number (rate, volume) Left turns it down; elsewhere\n                        Left goes back a level (Shift Up or Down steps a choice back); Escape closes the menu.\n  TurnOver slash        Every shortcut that works where you are, grouped. Enter runs one.\n  TurnOver V            Hands this application back to VoiceOver.\n  TurnOver Shift J      \"That was wrong\": marks this moment for your next feedback report. Press twice to send.\n  Control               Pauses speech; press again to carry on. Any other key stops it.\n  TurnOver 1            Input help: every key says what it does, without doing it. Press again to stop.\n  TurnOver Tab          Says what has focus.\n  TurnOver L            Reads the current line.\n  TurnOver A            Reads from here to the end (say all).\n  TurnOver E \/ Shift E  Next \/ previous spelling error, in any text: Word, TextEdit, Mail, a web page's text box.\n                        (VO Command E and VO Command Shift E in the Mac style.)\n  TurnOver Command C    Copies the last thing TurnOver said to the clipboard.\n  TurnOver Q            Quits TurnOver.\n  TurnOver Shift Escape Screen Curtain on or off (the screen goes black; TurnOver carries on as normal). VO Shift\n                        Underscore also works. If VoiceOver's curtain is on, TurnOver keeps it on when it takes\n                        over. To choose: TurnOver menu, Preferences, Speech, Screen Curtain while TurnOver leads.\n  Command Control N      The TurnOver menu from anywhere, even in an application VoiceOver leads: TurnOver\n                         steps in for the menu and hands back to VoiceOver when you close it.\n  Command Control T      Starts TurnOver, or quits it, from anywhere. Quitting turns VoiceOver on. A\n                         rising or a falling chime says which. It works even if TurnOver is stuck:\n                         the way out that always works (a small helper, TurnOver Key, listens for it\n                         from login; you will see it in System Settings, General, Login Items).\n\nVoiceOver's commands. TurnOver uses VoiceOver's own commands (VO is Control and Option together), so\nwhat you already know works. The TurnOver key is either Caps Lock or VO to start with; to keep only one:\nTurnOver menu, Preferences, Keyboard, TurnOver key.\n  VO M                       The menu bar: lands on the Apple menu's title; Left and Right go along the bar,\n                             Down opens a menu, Escape leaves. VO M twice: the status menus at the right, the\n                             same way. (Windows style: Command alone opens the Apple menu, Option B lists the\n                             status menus.)\n  VO D                       The Dock.\n  VO Shift M                 The context menu.\n  VO F3                      Describes the item with focus.\n  Right Option T             The date and time (VO F7 also works).\n  VO F                       Find, in any application TurnOver leads: type the text and press Return.\n                             TurnOver goes to the next match and leaves you there (a message in Mail's\n                             list, a line in a page or a message, text in a document or Terminal).\n                             Escape cancels. VO G and VO Shift G: the next and previous match.\n  VO T                       The formatting at the caret (font, size, style).\n  VO I                       The Item Chooser: everything in the window, or every line of a page or\n                             message. Type to narrow the list; Backspace widens it; Enter goes there.\n  VO U                       The rotor. Left and Right choose a kind: on a page or message, headings,\n                             links, form controls, landmarks, tables; in a window, buttons, text\n                             fields, tabs, lists and so on; in Word, headings and comments. Up and Down\n                             move through that kind, typing narrows it, Enter goes there.\n  VO Command H, L, J, T, X, G  Next heading, link, form control, table, list, graphic (add Shift: previous).\n  VO Space                   Presses the item.\n(A Windows layout, Alt for the menus and so on, is set aside for now; it will come back later.)\n\nMoving through anything, even what the keyboard cannot reach (object navigation):\n  TurnOver Right \/ Left         Next or previous item in the window, in reading order, going in and out of\n                                groups by itself (as Narrator's Caps Lock arrows; in the Mac style, as VoiceOver's).\n  TurnOver Shift Right \/ Left   The same.\n  TurnOver Shift Down \/ Up      Into an item, or out to what holds it.\n  TurnOver W                    The current word (TurnOver Control S: the sentence).\n  TurnOver Enter                Presses the item (or puts you in it to type).\n\n\n\nSAFARI (AND MAIL MESSAGES): BROWSE MODE\n\nWeb pages and email messages are read as a document, like NVDA's browse mode.\n  Up \/ Down arrows       Line by line.        Option arrows: word by word.\n  H \/ Shift H            Next \/ previous heading. 1 to 6: headings of that level.\n  K, B, E, F, L, T, D    Link, button, edit field, form field, list, table, landmark (Shift goes back).\n  Enter                  Activates a link or button.\n  TurnOver Space         Switches between browse mode and typing into the page (focus mode).\n  Shift with arrows      Selects text; Command C copies it.\nVideo players (YouTube) switch to focus mode by themselves when you Tab into them or press Enter on Play, so\ntheir own keys work: on YouTube, K plays and pauses, J and L skip back and forward. Escape goes back to\nbrowse mode.\nBack in Safari returns you to where you were on the previous page.\nFind (Command F): Return reads the line of each match; Escape puts you on it in the page.\nPages in other languages are read with a voice for that language, when the page says which language it is\nin and a voice for it is installed (System Settings, Accessibility, Spoken Content, System voice, Manage\nVoices). To choose the voice for a language, or turn this off: TurnOver menu, Preferences, Speech.\nSafari's sidebar (Reading List, bookmarks) is not reached by Tab: TurnOver Shift Up to the window, TurnOver\nShift Down, then TurnOver Right to the list, and TurnOver Enter. Return opens an item; the context menu\n(VO Shift M, or Right Option) has Delete.\n\n\nMAIL\n\nUp and Down move through the message list; Home and End go to the first and last message. The\nmessage itself is read in browse mode (above). Tab goes from the message list to the message, and\nShift Tab to the mailboxes. Searching (Command Option F): type, then Return says how many results\nand goes to them. Writing: Tab goes round every field, the From and Signature pop-ups included;\nCommand Shift D sends and TurnOver says \"sent\". Settings windows: Up and Down move between the tabs\nat the top, Tab goes into the page, Shift Tab comes back to the tab.\n\nMESSAGES AND WHATSAPP (PREVIEWS)\n\nYour keyboard stays in the message box. Tab takes you to the messages, starting on the newest, and\nShift Tab to the conversations: Up and Down move, Home and End go to the ends, Return opens a\nconversation, and the shortcut menu (VO Shift M, or the right Option key in the Windows style) lists a\nmessage's own actions. Escape goes back to the box. TurnOver 1 to 9 read the latest messages from\nanywhere, 1 the newest. In WhatsApp, Tab goes on from the chats to the sections (Chats, Updates, Calls,\nArchived, Starred); Return shows one. New messages in the open conversation are read as they arrive.\n\nMUSIC, PODCASTS AND TV (PREVIEWS)\n\nUp and Down move through everything on the page, shelf by shelf, reading further down as you go; Left\nand Right jump between shelves; a letter jumps to the next item starting with it. Tab moves between the\nsidebar, the page, the player and the tool bar (Back, Share, More, Search). Return opens or plays;\nSpace plays and pauses and says which; Escape goes back; TurnOver Shift N says what is playing.\nCommand F searches: Return reads the results.\n\n\nTERMINAL\n\nNew output is read as it arrives; your own typing is not read twice. After cd, the new folder is\nsaid. Tab completions and the Up arrow's history are read.\n  TurnOver Up \/ Down        Reads earlier lines without disturbing the shell; TurnOver Home \/ End: top, bottom.\n  Delete, Option Delete  Says what was deleted.\n  Left \/ Right           Reads the character at the cursor; Option Left \/ Right: word by word.\n  TurnOver Command C        Copies the last output TurnOver read.\nNot yet: full-screen programs such as less, man, vim and top.\n\n\nMICROSOFT WORD (PREVIEW)\n\nWord support is an early preview, off to start with, as it is still changing day to day. To try it: TurnOver\nmenu (Caps Lock N), Applications, Microsoft Word, set to \"TurnOver leads\". (Word is only listed when it is installed.) Your reports on Word are very welcome.\n\nThe document reads as you move, and says the page as you arrive on a new one. TurnOver Shift L (or TurnOver\nDelete) says the page and line.\n  TurnOver H \/ Shift H      Next \/ previous heading.\n  TurnOver M \/ Shift M      Next \/ previous comment. TurnOver Option C reads the comment at the caret.\n  TurnOver E \/ Shift E      Next \/ previous spelling error.\n  TurnOver R \/ Shift R      Next \/ previous tracked change.\n  TurnOver Page Down \/ Up   Next \/ previous page.\n  TurnOver F7               The elements list: headings and comments.\n  Control F2             Word's menus.\n  Command B, I, U, E, L, R, J, Command Option 1 to 3 (headings), Command Shift N (Normal) say what changed.\nWith the VoiceOver keyboard style, where VO M is the menu bar and VO F7 the time:\n  VO Command M \/ R \/ E   Next comment \/ tracked change \/ spelling error (add Shift for previous).\n  VO Command H           Next heading.     VO U   The elements list.\nTables: arrowing into a table says its size, then the row, column and text; moving says what changed, with the\ncolumn's title (from the first row) and the row's title (from the first column). Empty cells say \"blank\".\n  Tab \/ Shift Tab            Next \/ previous cell (Word selects it: \"selected\" means typing replaces it).\n  TurnOver arrows            Cell to cell without selecting; \"edge of table\" at the edges.\nThe ribbon: F6 moves between the ribbon, sidebar, status bar and toolbar. On a ribbon tab (Home, Insert...), Left\nand Right change tab; Down or Tab goes into its commands; Tab and Shift Tab move through them. Escape, from the\nribbon, sidebar, status bar or toolbar, goes back to the document.\nIf you end up in Word's sidebar, TurnOver menu, Microsoft Word, \"Show or hide the sidebar\" takes you back.\n\n\nFINDER, CLAUDE AND TEXTEDIT (PREVIEWS)\n\nAll three are off to start with: TurnOver menu, Preferences, Applications, then \"TurnOver leads\" for each.\n\n\nTHE APP STORE (PREVIEW)\n\nTurn it on in the TurnOver menu, Applications, App Store.\n- Up and Down: every app, heading and button on the page, including the whole of each shelf.\n- Left and Right: the previous and next shelf. Home and End: the top and bottom.\n- Return opens an app's page or presses a button. Escape goes back.\n- Space presses the app's own button: Open, Get, Update or Re-download. A price needs Space twice.\n- Tab and Shift Tab: the sidebar (Search, Discover, Arcade, Updates, your account) and the page.\n- Command F goes to search; type, press Return, and the results are read.\n- A letter jumps to the next item starting with it.\n\nAPPLICATION CHOOSER\n\nEvery app with a window, including system alerts that Command Tab doesn't show (macOS asking to allow Screen Recording, a password prompt). Arrow to one and press Return to switch to it; an app with several windows has them in a submenu.\n- Mac style: TurnOver F1 twice (VoiceOver's VO F1 F1).\n- Windows style: Option Tab (Windows+Tab).\n\nSCREEN RECOGNITION (OCR)\n\nFor apps that don't tell a screen reader what's in them (games, Steam, a picture of text), TurnOver can read the window from the screen, as NVDA's NVDA+R does.\n- TurnOver R where TurnOver leads, or Command Control R anywhere, even where VoiceOver leads.\n- Up and Down: rows. Left and Right: characters; with Option or Control, words. Home and End: the row's start and end.\n- Tab and Shift Tab: the next and previous column or section (a sidebar, the main text).\n- Return or Space clicks the word you're on. Shift Return right-clicks, Option Return double-clicks. M moves the mouse there without clicking.\n- TurnOver R again reads the window again. Escape closes.\n- On a braille display, a routing key moves to that word; press it again to click.\n- The first time, macOS asks for Screen Recording for TurnOver: switch it on in Privacy and Security, then quit and reopen TurnOver. macOS may ask again now and then.\n- Preferences, Screen recognition: read new text as it appears, and read the whole result as it opens.\n\nBRAILLE\n\nTurnOver drives a braille display while it is in charge, using macOS's own braille drivers and tables, the\nones VoiceOver uses, so any display VoiceOver supports should work. When TurnOver hands back, VoiceOver takes\nthe display again. Three rising notes: TurnOver has the display; three falling: it has let it go.\nUSB: plug it in; nothing to set up.\nBluetooth: pair the display with VoiceOver first (VoiceOver Utility, VO F8, Braille, Displays, Add). Then\nTurnOver menu, Preferences, Braille, \"Use a braille display paired over Bluetooth\", and allow Bluetooth when\nmacOS asks. TurnOver takes the display from VoiceOver's braille server when it leads; it can take a few\nseconds.\nWhat it shows: the line you are on (in browse mode and in text), or the item you are on (the selected message\nin Mail's list, a menu item, a chat, a shelf item in Music), and briefly what TurnOver says by itself (messages,\nlive updates such as Claude's progress), which give way as soon as you move. Roles and states use NVDA's short\nforms: btn, chk, lnk, h2.\n  Panning keys, joystick left and right   Read along the line; at the ends, the previous or next line.\n  Joystick up and down                    Previous or next line, or item in a list; spoken too.\n  Routing keys                            The cursor to that character; on a link or button, press it.\n  Joystick pressed in                     Activates the item.\n  Dots                                    Type, contracted a word at a time by default (space translates).\n  Dot 7 \/ dot 8                           Backspace (hold to keep deleting) \/ Return.\n  Space with dots                         VoiceOver's braille commands, for example: 1 and 4 previous and\n                                          next item, 3 and 6 up and down, 1 2 3 and 4 5 6 first and last,\n                                          1 2 Escape, 2 3 4 5 Tab, 1 2 3 4 pause speech, 2 and 5 pan, 1 7\n                                          Command for the next key (1 8 locks it; 2 7 Option, 3 7 Control,\n                                          4 7 Shift), 1 3 4 5 announcement history.\nTurnOver 1 (input help) covers the display too: each key and chord says what it does. TurnOver slash (the\nshortcuts list) lists your display's keys and every chord while a display is connected.\nSettings: TurnOver menu, Preferences, Braille: the table (Unified English contracted to start with), typing,\nwhat is spoken while typing, messages and how long they stay, word wrap, the cursor, and more.\n\n\nIF SOMETHING GOES WRONG\n\nIf TurnOver stops responding, VoiceOver comes back by itself within a few seconds, and your keys work\nagain. If it is still stuck after that, TurnOver restarts itself.\nTurnOver V always hands the application to VoiceOver. Quitting TurnOver (TurnOver Q, or the TurnOver menu, or\nthe menu bar item) leaves VoiceOver in charge everywhere.\n\nIf TurnOver goes silent (a voice you chose does not speak, or was removed), get VoiceOver back with Command\nControl T, then put the voice back from Terminal with this one line, and start TurnOver again; everything else\nyou set is kept:\n  python3 -c \"import json,os;p=os.path.expanduser('~\/Library\/Application Support\/TurnOver\/settings.json');d=json.load(open(p));d.setdefault('speech',{});d['speech']['voice']='com.apple.eloquence.en-GB.Reed';d['speech']['languageVoices']={};json.dump(d,open(p,'w'),indent=2)\"\nTo start completely afresh instead, quit TurnOver and delete the settings file; TurnOver makes a new one:\n  rm \"$HOME\/Library\/Application Support\/TurnOver\/settings.json\"\nFrom build 15, TurnOver notices a voice that stays silent and switches back to Reed by itself.\n\n\nSENDING FEEDBACK\n\nThe quickest way: the moment TurnOver gets something wrong, press TurnOver Shift J. It marks the moment and\nyou carry on. When you're ready, TurnOver menu, Send feedback, Send your marked moments: one report with them\nall, and an email listing when and where each was, to add a line to if you can. Press TurnOver Shift J twice\nto send straight away.\n\nTo ask for an app to be supported: switch to it, then TurnOver menu, Applications, Request support for it.\nAn email opens with a description of how the app is built for accessibility (kinds of item and counts, never\nits content). Add a line about what you use it for, and send it. The apps most asked for come first.\n\nTurnOver menu (TurnOver N), Send feedback:\n  Save a report, including what TurnOver said          (recommended: shows what you heard; it may include\n                                                     the text of your emails and pages)\n  Save a report, leaving out what TurnOver said        (when what was on screen is private)\nA zip file is saved on your Desktop. Attach it to your message, and say in a sentence what you were\ndoing and what you expected.\n\nTurnOver keeps its own logs for 30 days, on your Mac only:\n~\/Library\/Application Support\/TurnOver\/logs\/\n\n\nREMOVING TURNOVER\n\nTurnOver menu, Uninstall TurnOver, then either:\n  Remove the app only        puts the app in the Bin and keeps your settings and permissions, so a copy\n                             installed again, wherever you put it, carries on as before.\n  Uninstall completely       as below.\nUninstall completely removes TurnOver's login items, puts the app, its\nsettings and its logs in the Bin, resets its Accessibility, Input Monitoring and Automation permissions, and\nturns VoiceOver on. This is also the cleanest way to start again if permissions get muddled: uninstall, then\ndownload TurnOver afresh.\n"
+        },
+        "AXVisibleCharacterRange" : {
+          "rg" : [
+            0,
+            1276
+          ]
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 8,
+      "params" : [
+        "AXLineForIndex",
+        "AXRangeForLine",
+        "AXBoundsForRange",
+        "AXStringForRange",
+        "AXAttributedStringForRange",
+        "AXRangeForPosition",
+        "AXRangeForIndex",
+        "AXStyleRangeForIndex",
+        "AXSharedTextElementForIndex",
+        "AXReplaceRangeWithText",
+        "AXRTFForRange"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXEnabled" : {
+          "b" : false
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            181.5,
+            504,
+            643,
+            19
+          ]
+        },
+        "AXHidden" : {
+          "b" : true
+        },
+        "AXIdentifier" : {
+          "s" : "_NS:24"
+        },
+        "AXOrientation" : {
+          "s" : "AXHorizontalOrientation"
+        },
+        "AXParent" : {
+          "e" : 1
+        },
+        "AXPosition" : {
+          "pt" : [
+            181.5,
+            504
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXScrollBar"
+        },
+        "AXRoleDescription" : {
+          "s" : "scroll bar"
+        },
+        "AXSize" : {
+          "sz" : [
+            643,
+            19
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXValue" : {
+          "n" : 0.18518517911434174
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 9,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            12,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            13,
+            14,
+            16,
+            12,
+            15
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            813,
+            131,
+            19,
+            384.5
+          ]
+        },
+        "AXHidden" : {
+          "b" : true
+        },
+        "AXIdentifier" : {
+          "s" : "_NS:27"
+        },
+        "AXOrientation" : {
+          "s" : "AXVerticalOrientation"
+        },
+        "AXParent" : {
+          "e" : 1
+        },
+        "AXPosition" : {
+          "pt" : [
+            813,
+            131
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXScrollBar"
+        },
+        "AXRoleDescription" : {
+          "s" : "scroll bar"
+        },
+        "AXSize" : {
+          "sz" : [
+            19,
+            384.5
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXValue" : {
+          "n" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 10,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            230,
+            109,
+            14,
+            14
+          ]
+        },
+        "AXParent" : {
+          "e" : 3
+        },
+        "AXPosition" : {
+          "pt" : [
+            230,
+            109
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXGroup"
+        },
+        "AXRoleDescription" : {
+          "s" : "group"
+        },
+        "AXSize" : {
+          "sz" : [
+            14,
+            14
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 11,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXFrame" : {
+          "rc" : [
+            822,
+            135,
+            6,
+            26
+          ]
+        },
+        "AXParent" : {
+          "e" : 10
+        },
+        "AXPosition" : {
+          "pt" : [
+            822,
+            135
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXValueIndicator"
+        },
+        "AXRoleDescription" : {
+          "s" : "value indicator"
+        },
+        "AXSize" : {
+          "sz" : [
+            6,
+            26
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXValue" : {
+          "n" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 12,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXFrame" : {
+          "rc" : [
+            814,
+            132,
+            0,
+            0
+          ]
+        },
+        "AXParent" : {
+          "e" : 10
+        },
+        "AXPosition" : {
+          "pt" : [
+            814,
+            132
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "increment arrow button"
+        },
+        "AXSize" : {
+          "sz" : [
+            0,
+            0
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXIncrementArrow"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 13,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXFrame" : {
+          "rc" : [
+            814,
+            132,
+            0,
+            0
+          ]
+        },
+        "AXParent" : {
+          "e" : 10
+        },
+        "AXPosition" : {
+          "pt" : [
+            814,
+            132
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "decrement arrow button"
+        },
+        "AXSize" : {
+          "sz" : [
+            0,
+            0
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXDecrementArrow"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 14,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXFrame" : {
+          "rc" : [
+            822,
+            161,
+            6,
+            350.5
+          ]
+        },
+        "AXParent" : {
+          "e" : 10
+        },
+        "AXPosition" : {
+          "pt" : [
+            822,
+            161
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "increment page button"
+        },
+        "AXSize" : {
+          "sz" : [
+            6,
+            350.5
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXIncrementPage"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 15,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXPress"
+      ],
+      "attrs" : {
+        "AXFrame" : {
+          "rc" : [
+            822,
+            135,
+            6,
+            0
+          ]
+        },
+        "AXParent" : {
+          "e" : 10
+        },
+        "AXPosition" : {
+          "pt" : [
+            822,
+            135
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXButton"
+        },
+        "AXRoleDescription" : {
+          "s" : "decrement page button"
+        },
+        "AXSize" : {
+          "sz" : [
+            6,
+            0
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXDecrementPage"
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 0
+        },
+        "AXWindow" : {
+          "e" : 0
+        }
+      },
+      "id" : 16,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+            0
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+            18,
+            19,
+            0
+          ]
+        },
+        "AXEnhancedUserInterface" : {
+          "b" : true
+        },
+        "AXFocusedUIElement" : {
+          "e" : 8
+        },
+        "AXFocusedWindow" : {
+          "e" : 0
+        },
+        "AXFrontmost" : {
+          "b" : true
+        },
+        "AXFunctionRowTopLevelElements" : {
+          "es" : [
+
+          ]
+        },
+        "AXHidden" : {
+          "b" : false
+        },
+        "AXMainWindow" : {
+          "e" : 0
+        },
+        "AXMenuBar" : {
+          "e" : 18
+        },
+        "AXPreferredLanguage" : {
+          "s" : "en_GB"
+        },
+        "AXRole" : {
+          "s" : "AXApplication"
+        },
+        "AXRoleDescription" : {
+          "s" : "application"
+        },
+        "AXTitle" : {
+          "s" : "TextEdit"
+        },
+        "AXWindows" : {
+          "es" : [
+            0,
+            19
+          ]
+        }
+      },
+      "id" : 17,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXCancel"
+      ],
+      "attrs" : {
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXEnabled" : {
+          "b" : true
+        },
+        "AXFrame" : {
+          "rc" : [
+            0,
+            0,
+            1470,
+            33
+          ]
+        },
+        "AXIdentifier" : {
+          "s" : "_NS:834"
+        },
+        "AXParent" : {
+          "e" : 17
+        },
+        "AXPosition" : {
+          "pt" : [
+            0,
+            0
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXMenuBar"
+        },
+        "AXSelectedChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXSize" : {
+          "sz" : [
+            1470,
+            33
+          ]
+        },
+        "AXTopLevelUIElement" : {
+          "e" : 18
+        },
+        "AXVisibleChildren" : {
+          "es" : [
+
+          ]
+        }
+      },
+      "id" : 18,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    },
+    {
+      "actions" : [
+        "AXRaise"
+      ],
+      "attrs" : {
+        "AXActivationPoint" : {
+          "pt" : [
+            176,
+            87
+          ]
+        },
+        "AXChildren" : {
+          "es" : [
+
+          ]
+        },
+        "AXChildrenInNavigationOrder" : {
+          "es" : [
+
+          ]
+        },
+        "AXDocument" : {
+          "s" : "file:\/\/\/Users\/user\/Documents\/Guide.txt"
+        },
+        "AXFocused" : {
+          "b" : false
+        },
+        "AXFrame" : {
+          "rc" : [
+            146,
+            71,
+            656,
+            422
+          ]
+        },
+        "AXFullScreen" : {
+          "b" : false
+        },
+        "AXIdentifier" : {
+          "s" : "_NS:31"
+        },
+        "AXMain" : {
+          "b" : false
+        },
+        "AXMinimized" : {
+          "b" : false
+        },
+        "AXModal" : {
+          "b" : false
+        },
+        "AXParent" : {
+          "e" : 17
+        },
+        "AXPosition" : {
+          "pt" : [
+            146,
+            71
+          ]
+        },
+        "AXRole" : {
+          "s" : "AXWindow"
+        },
+        "AXRoleDescription" : {
+          "s" : "standard window"
+        },
+        "AXSize" : {
+          "sz" : [
+            656,
+            422
+          ]
+        },
+        "AXSubrole" : {
+          "s" : "AXStandardWindow"
+        },
+        "AXTitle" : {
+          "s" : "Guide.txt"
+        }
+      },
+      "id" : 19,
+      "params" : [
+        "AXReplaceRangeWithText"
+      ]
+    }
+  ],
+  "recorded" : "2026-10-08T09:07:57Z",
+  "root" : 0
+}

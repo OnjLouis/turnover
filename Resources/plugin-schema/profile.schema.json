@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TurnOver plugin profile",
+  "description": "The rules: labels, keys, watch, silence, and an optional view (PLUGIN-GUIDE.md).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/label"
+      }
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/key"
+      }
+    },
+    "watch": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/watch"
+      }
+    },
+    "silence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/match"
+      }
+    },
+    "hold": {
+      "type": "array",
+      "description": "Lists that take the keyboard but report nothing as the arrows move: TurnOver walks their rows itself.",
+      "items": {
+        "$ref": "#/$defs/hold"
+      }
+    },
+    "view": {
+      "type": "object",
+      "description": "A whole app's shape: chat, media or panes (see the guide)."
+    }
+  },
+  "$defs": {
+    "match": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Which elements a rule means; every field given must match. Strings may use * and match without regard to case.",
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subrole": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "help": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "window": {
+          "type": "string"
+        },
+        "inside": {
+          "$ref": "#/$defs/match"
+        },
+        "parent": {
+          "$ref": "#/$defs/match"
+        },
+        "unnamed": {
+          "type": "boolean"
+        },
+        "pressable": {
+          "type": "boolean"
+        },
+        "nth": {
+          "type": "integer"
+        },
+        "any": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/match"
+          }
+        }
+      }
+    },
+    "label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "match"
+      ],
+      "properties": {
+        "match": {
+          "$ref": "#/$defs/match"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameFrom": {
+          "enum": [
+            "nextText",
+            "previousText",
+            "childText",
+            "parentText",
+            "help",
+            "description",
+            "ancestorHelp",
+            "rowText"
+          ]
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "key": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "description",
+        "action"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "turnover+shift+p, control+option+1, f6"
+        },
+        "description": {
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "press",
+            "focus",
+            "read",
+            "menu",
+            "keys",
+            "say"
+          ]
+        },
+        "target": {
+          "$ref": "#/$defs/match"
+        },
+        "menu": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "keys": {
+          "type": "string"
+        },
+        "say": {
+          "type": "string"
+        },
+        "letter": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9]$",
+          "description": "Its letter in the plugin layer: Command Control Comma, P, then this letter."
+        }
+      }
+    },
+    "watch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "match"
+      ],
+      "properties": {
+        "match": {
+          "$ref": "#/$defs/match"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "read": {
+          "enum": [
+            "value",
+            "text"
+          ]
+        }
+      }
+    },
+    "hold": {
+      "type": "object",
+      "description": "A list TurnOver walks itself: when the focus lands on `focus`, TurnOver holds `items` (whose children are the rows); Up and Down move, Return and Space press the row.",
+      "required": [
+        "focus",
+        "items"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "focus": {
+          "$ref": "#/$defs/match"
+        },
+        "items": {
+          "$ref": "#/$defs/match"
+        }
+      }
+    }
+  }
+}

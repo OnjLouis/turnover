@@ -1,0 +1,34 @@
+{
+  "bundle": "com.apple.Notes",
+  "name": "Notes",
+  "view": {
+    "kind": "panes",
+    "panes": {
+      "parts": [
+        {
+          "name": "Folders",
+          "match": {
+            "role": "AXOutline",
+            "description": "Folders"
+          },
+          "hint": "Up and Down choose a folder."
+        },
+        {
+          "name": "Notes list",
+          "match": {
+            "role": "AXTable",
+            "identifier": "ICMNoteListTableView*"
+          },
+          "hint": "Up and Down choose a note."
+        },
+        {
+          "name": "Note",
+          "match": {
+            "role": "AXTextArea",
+            "identifier": "Note[*"
+          }
+        }
+      ]
+    }
+  }
+}

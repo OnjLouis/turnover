@@ -1,0 +1,25 @@
+name: Build and test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Swift version
+        run: swift --version
+      - name: Build and run the unit tests (no signing, no install)
+        run: ./build.sh --no-install
+        env:
+          TURNOVER_BUILD: ${{ runner.temp }}/turnover-build
+          TURNOVER_IDENTITY: "-"
+      - name: Generated files are up to date
+        run: git diff --exit-code -- Sources/TurnOverCore/EmbeddedResources.swift "Resources/TurnOver Guide.txt"

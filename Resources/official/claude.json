@@ -1,0 +1,20 @@
+{
+  "id": "official-claude",
+  "name": "Claude",
+  "version": "2.0",
+  "author": "TurnOver",
+  "contact": "https://github.com/TurnOver-For-Mac/turnover/issues",
+  "summary": "The Claude app's conversation read message by message.",
+  "description": "Claude: the conversation as messages, the prompt box, and replies read as they finish.",
+  "apps": [
+    "com.anthropic.claudefordesktop"
+  ],
+  "kind": "official",
+  "privacy": "Reads Claude only, on your Mac; nothing is sent anywhere.",
+  "changes": [
+    {
+      "version": "2.0",
+      "notes": "Listed as an official module."
+    }
+  ]
+}
