@@ -541,7 +541,10 @@ public enum Speech {
     /// True while what is queued is only the echo of typing: a typed key then does not cut it short
     /// (fast typing lost the "period" after "fast."). Any other speech clears it.
     public private(set) static var echoOnly = false
-    private static func echo(_ text: String) {
+    /// The echo of typing is spoken as private: the log keeps only its length and the history a feedback report
+    /// carries leaves it out, so what was typed never reaches a report (a contributor reading the code, 20 Oct 2026).
+    private static func echo(_ text: String) { asPrivate { echoSpeech(text) } }
+    private static func echoSpeech(_ text: String) {
         let wasEcho = echoOnly || !(player?.isBusy ?? false)
         // A typed letter or short word in another script (Arabic in Safari, Brave, TextEdit) in that script's voice:
         // too short for the language guess, so silent under an English voice (a tester, ; wishlist 7).

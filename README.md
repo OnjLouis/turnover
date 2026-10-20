@@ -74,6 +74,32 @@ The tests are a program of their own (`swift test` isn't used); `./build.sh --no
 A fork that publishes its own builds must change `SUFeedURL` and `SUPublicEDKey` in Resources/Info.plist: otherwise its
 copies offer TurnOver's own updates.
 
+## Developing
+
+The loop is: edit, `./build.sh --no-install` (compiles everything and runs the unit tests, a minute or two; SwiftPM
+rebuilds only what changed), then `./build.sh` to install the result as /Applications/TurnOver.app and restart it, and
+read the newest log in ~/Library/Application Support/TurnOver/logs. The log is the main instrument: every key, what
+was said (as lengths, never the words) and every event, with timings.
+
+Don't run it with `swift run turnover`: TurnOver needs its app bundle (Info.plist, the helpers, the Settings app and
+Key helper inside it, and a code signature the permissions are tied to), so a bare executable starts half-blind and
+misbehaves. `turnover-coretest` (built with everything else) exercises the text and object layers against a running
+app without speaking; TESTING.md has the rest.
+
+## Where TurnOver stands
+
+TurnOver is built to work **alongside VoiceOver**, not to replace it: VoiceOver stays on, handles passwords and
+macOS's own prompts, and reads any app you give back to it. That is a design choice, not a stopgap: it means a blind
+person is never without speech, and TurnOver can concentrate on the apps where it reads better.
+
+TurnOver has its own settings (the Settings window, Command Control Comma then S). "Copy VoiceOver settings" is a
+one-time import of your voice, rate, pitch, verbosity and typing echo, so a new user starts where they were; it is not
+how settings are meant to be managed. Rate, volume and pitch are kept in step with VoiceOver's so the two readers
+sound the same when they hand over.
+
+Whether TurnOver should aim to stand entirely on its own is a fair question, and one for Discussions on this
+repository. The plans in docs/ say which decisions are settled and which are open.
+
 ## Finding your way around the code
 
 - [ARCHITECTURE.md](ARCHITECTURE.md): the map from each mechanism to its files and tests.

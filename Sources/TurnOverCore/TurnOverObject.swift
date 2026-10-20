@@ -46,49 +46,19 @@ open class TurnOverObject: ScriptableObject {
         if _name.isEmpty, [.editableText, .searchField, .comboBox].contains(role), let p = placeholder, !p.isEmpty { return p }
         // The window's own buttons have no name: VoiceOver calls them by what they do.
         if _name.isEmpty, let n = ["AXCloseButton": "close", "AXMinimizeButton": "minimise", "AXZoomButton": "zoom", "AXFullScreenButton": "full screen"][element.string(kAXSubroleAttribute) ?? ""] { return n }
-        // SwiftUI links a control to its label (AXTitleUIElement) a moment after the control takes the focus: asked
-        // at once, the name was empty and stayed so ("switch, on" in TurnOver Settings, 18 Oct 2026). Asked again.
-        if _name.isEmpty {
-            func label() -> String? {
-                guard let l = element.element(kAXTitleUIElementAttribute)?.string(kAXValueAttribute)?.trimmingCharacters(in: CharacterSet(charactersIn: ": \n")),
-                      !l.isEmpty, l.count <= 60 else { return nil }
-                return l
-            }
-            if let l = label() { return l }
-            // The asking again and the window search below only in TurnOver's own Settings window, the SwiftUI app they
-            // were made for: elsewhere a nameless field (Mail's message preview) set off a search of the whole window
-            // on every arrow, and opening Mail froze TurnOver for 20 s searching for each item (18 Oct 2026).
-            guard NSRunningApplication(processIdentifier: element.pid)?.bundleIdentifier == "com.turnover.settings" else { return _name }
-            // SwiftUI builds a row's accessibility, the label's link among it, only when something asks for the row's
-            // contents: reached straight from a focus change, the control had no label yet (18 Oct 2026). Ask once.
-            if !askedRow, let row = element.element(kAXParentAttribute) {
-                askedRow = true
-                _ = row.elements(kAXChildrenAttribute)
-                if let l = label() { return l }
-            }
-            // The element a focus change hands over can be a stand-in that never gets the label (SwiftUI, 18 Oct
-            // 2026: "slider, 61 percent"); the same control reached through the window's tree has it. Found once by
-            // its place: the same role and frame.
-            if !waitedForLabel, Thread.isMainThread, [.popUpButton, .slider, .checkBox, .comboBox, .radioButton, .spinButton, .editableText].contains(role),
-               let mine = Self.frame(element), let window = element.element(kAXWindowAttribute) {
-                waitedForLabel = true
-                var queue = [window], seen = 0
-                let wanted = element.role
-                while !queue.isEmpty, seen < 600 {
-                    let e = queue.removeFirst(); seen += 1
-                    if e.role == wanted, let f = Self.frame(e), f == mine,
-                       let l = e.element(kAXTitleUIElementAttribute)?.string(kAXValueAttribute)?.trimmingCharacters(in: CharacterSet(charactersIn: ": \n")), !l.isEmpty, l.count <= 60 {
-                        return l
-                    }
-                    queue.append(contentsOf: e.elements(kAXChildrenAttribute))
-                }
-            }
-        }
+        if _name.isEmpty, let l = swiftUILabel() { return l }
         return _name
     }
+    /// The name as the element gives it, for a subclass that knows where else to look (TurnOver Settings' module).
+    var rawName: String { _name }
+    /// SwiftUI links a control to its label (AXTitleUIElement) a moment after the control takes the focus: asked
+    /// at once, the name was empty and stayed so ("switch, on" in TurnOver Settings, 18 Oct 2026). Asked again.
+    func swiftUILabel() -> String? {
+        guard let l = element.element(kAXTitleUIElementAttribute)?.string(kAXValueAttribute)?.trimmingCharacters(in: CharacterSet(charactersIn: ": \n")),
+              !l.isEmpty, l.count <= 60 else { return nil }
+        return l
+    }
     private lazy var _name: String = { Self.oneLine(computedName) }()
-    private var waitedForLabel = false
-    private var askedRow = false
 
     /// A programming class name standing in for a title ("Avalonia.Controls.Grid": .NET's Avalonia titles controls
     /// it wasn't given a name for with their class): no name at all (parts request #5, Libation, 14 Oct 2026). Three

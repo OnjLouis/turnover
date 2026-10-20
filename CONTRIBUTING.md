@@ -14,6 +14,9 @@ mostly about not wasting your time or mine.
 
 ## Before you write code
 
+- **Build and run it the way the README's Developing section says** (`./build.sh`, not `swift run`), and read the
+  log; most of what TurnOver does is only visible there.
+
 - **Small changes**: just send the pull request.
 - **Anything bigger** (a new feature, a change to how focus, speech, keys or the VoiceOver hand-over work): open an
   issue first and say what you have in mind. Those parts are shared by every app, and a change that helps one app
