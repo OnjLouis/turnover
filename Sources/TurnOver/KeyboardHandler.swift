@@ -486,7 +486,7 @@ nonisolated final class KeyboardHandler: @unchecked Sendable {
         }
     }
 
-    /// Command Tab did nothing eight times running, then worked once TurnOver was turned off and on (Oliver, 20 Oct
+    /// Command Tab did nothing eight times running, then worked once TurnOver was turned off and on (20 Oct
     /// 2026): the Mac's view of the modifiers had drifted from the keyboard's, most likely a modifier TurnOver had
     /// lifted or put back (post) that the hand no longer held. Before a Command Tab passes, any modifier the session
     /// thinks is held but the keyboard doesn't is released, and both states go in the log for the next time.
