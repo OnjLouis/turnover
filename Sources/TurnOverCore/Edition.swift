@@ -26,6 +26,8 @@ public enum Edition {
     /// Where Support TurnOver goes: straight to the payment pages, nothing in between (20 Oct 2026: "as easy as possible").
     public static let sponsorsURL = "https://github.com/sponsors/TurnOver-For-Mac"
     public static let kofiURL = "https://ko-fi.com/oliverkennett"
+    /// Every published build, newest first, each with its notes and its zip: for going back to an earlier one.
+    public static let releasesURL = "https://github.com/TurnOver-For-Mac/turnover/releases"
     /// The build number (CFBundleVersion; raised for every published build), so a report says exactly which build.
     public static var build: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "?" }
     /// "TurnOver 1.0", or "TurnOver 1.0 (build 3)" once builds are numbered.

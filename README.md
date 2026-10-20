@@ -30,7 +30,9 @@ TurnOver, which opens it. GitHub Sponsors is coming once GitHub has approved the
 
 Download the latest build from the [releases page](https://doll-eye.github.io/turnover-updates/). It runs on macOS 14
 or later, on Apple silicon and Intel Macs. Move TurnOver to Applications and open it; a welcome explains the two
-permissions macOS asks for (Accessibility and Input Monitoring). TurnOver updates itself.
+permissions macOS asks for (Accessibility and Input Monitoring). TurnOver updates itself. Every build is also on the
+[releases page](../../releases), newest first, so you can go back to an earlier one if the newest breaks something:
+download it, replace the app, and skip the newer one in TurnOver's menu, About and updates, Updates.
 
 The [guides](https://doll-eye.github.io/turnover-updates/guide.html) cover getting started, the keys, reading, the
 apps, the keyboard styles and troubleshooting.

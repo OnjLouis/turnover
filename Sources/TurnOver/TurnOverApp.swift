@@ -79,6 +79,10 @@ final class TurnOverApp {
                                           }),
                                           MenuItem("Undo the VoiceOver settings copy", .action { Speech.speakMessage(VoiceOverSettings.undo()) }, hint: "Puts back the voice, rate, pitch, volume, verbosity and typing echo from before the first copy"),
                                           MenuItem("Updates", .submenu { Updater.shared.menuItems() }),
+                                          MenuItem("Previous builds", .action {
+                                              NSWorkspace.shared.open(URL(string: Edition.releasesURL)!)
+                                              Speech.speakMessage("TurnOver's releases page is open in your browser")
+                                          }, hint: "Every build on GitHub, newest first, to go back to one if the newest breaks something: download it, replace the app, and skip the newer one in Updates"),
             MenuItem("Uninstall TurnOver", .submenu { Uninstaller.menuItems() })]
         TurnOverMenu.shared.readsApp = { [weak self] b in self?.lead.shouldLead(b) ?? false }
         TurnOverMenu.shared.switchReader = { [weak self] in let to = MenuAnywhere.shared.voiceOverWasReading; DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self?.lead.switchCurrent(toTurnOver: to) } }
