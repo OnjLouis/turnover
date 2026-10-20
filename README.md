@@ -49,8 +49,8 @@ it keeps what was read.
 
 ## Building it yourself
 
-You need a Mac with Xcode 26 installed (the command line tools alone aren't enough: some of Apple's headers only build
-with the full Xcode). The finished app runs on macOS 14 or later.
+You need a Mac with Xcode 27 installed (the macOS 27 SDK; the command line tools alone aren't enough). The finished
+app runs on macOS 14 or later.
 
 ```bash
 git clone https://github.com/TurnOver-For-Mac/turnover.git
