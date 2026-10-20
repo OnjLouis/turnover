@@ -2,6 +2,15 @@
 
 The newest build is first. "Reported by a tester" marks a fix for something a tester sent in. Thank you.
 
+## 2.0, build 22 (in progress)
+
+### Fixed
+
+- VoiceOver keys: Right Arrow reads the character you just passed, as VoiceOver does, so what you hear is what
+  Backspace will delete. NVDA keys and JAWS keys keep reading the character after the caret, as on Windows.
+- Backspace speaks the deleted character at once, instead of after waiting for the caret (Mail's compose window held
+  every repeated Backspace back by a quarter of a second).
+
 ## 2.0, build 21
 
 ### New to try

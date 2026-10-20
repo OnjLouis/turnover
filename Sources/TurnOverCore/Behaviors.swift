@@ -348,6 +348,16 @@ open class EditableText: TurnOverObject {
             caretMoved(speak: unit == .line && readsLineAtEdge ? .line : nil, gesture: gesture, info: newInfo)
             return
         }
+        // VoiceOver's reading of a plain Right by character: the character just passed over, now before the caret, so
+        // what you hear is what Backspace will delete (Oliver, 20 Oct 2026: "you have to be to the right of the
+        // object you want to backspace"). NVDA reads the character after the caret; the Windows family keeps that.
+        if unit == .character, config.general.macKeys, gesture.keyName == "rightArrow", gesture.modifiers.isEmpty,
+           let n = newInfo, n.start > 0, let old = try? makeTextInfo(.bookmark(bookmark)), n.start > old.start {
+            let passed = n.copy(); passed.collapse(); _ = passed.move(.character, -1); passed.expand(.character)
+            caretMoved(speak: nil, gesture: gesture, info: n)
+            Speech.speakTextInfo(passed, unit: .character, reason: .caret)
+            return
+        }
         // Option+Right on the Mac stops at the end of the word, on the space or comma after it: say the word passed
         // over, as VoiceOver does, not "blank" or "comma" (Mail's compose window, 5 Oct 2026).
         if unit == .word, gesture.keyName == "rightArrow", let n = newInfo, n.start > 0 {
@@ -435,13 +445,18 @@ open class EditableText: TurnOverObject {
         }
         gesture.send()
         Speech.speakTypedCharacter("\u{8}", inEditable: true)
+        let c = chunk.replacingOccurrences(of: "\r\n", with: "\n")
+        // Said at once, before the caret is waited for: with something before the caret the deletion is certain, and
+        // the wait (up to 300 ms in web content, 100 to 160 accessibility calls) held back every repeated Backspace
+        // in Mail's compose window (Oliver, 20 Oct 2026: "not reading so well").
+        if !c.isEmpty {
+            // A line break has nothing to spell: say what it was ("new line"), as for any character named on its own.
+            if let only = c.first, c.count == 1, only.isNewline { Speech.speakMessage(Symbols.name(of: only)) }
+            // A word or a line deleted says so ("deleted more"); a single character is just the character, as in NVDA.
+            else if c.count > 1 { Speech.speakText(unit == .character ? c : "deleted " + c.trimmingCharacters(in: .whitespaces)) } else { Speech.speakSpelling(c) }
+        }
         let (moved, newInfo) = hasCaretMoved(from: bookmark)
         guard moved else { return }
-        let c = chunk.replacingOccurrences(of: "\r\n", with: "\n")
-        // A line break has nothing to spell: say what it was ("new line"), as for any character named on its own.
-        if let only = c.first, c.count == 1, only.isNewline { Speech.speakMessage(Symbols.name(of: only)) }
-        // A word or a line deleted says so ("deleted more"); a single character is just the character, as in NVDA.
-        else if c.count > 1 { Speech.speakText(unit == .character ? c : "deleted " + c.trimmingCharacters(in: .whitespaces)) } else { Speech.speakSpelling(c) }
         caretMoved(speak: nil, gesture: gesture, info: newInfo)
         // caretMoved forgets the word being typed; a deletion changes it, and the next space or punctuation says the
         // word as it now is ("think", Backspace, Space: "thin"; a tester).

@@ -15,6 +15,3 @@ reference/nvda-addon-devguide/
 reference/nvda-addon-template/
 reference/nvda/
 __pycache__/
-
-# Local build output
-/build/
