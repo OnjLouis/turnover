@@ -87,13 +87,26 @@ static NSString *const kDrivers = @"/System/Library/ScreenReader/BrailleDrivers"
     });
 }
 
-/// A driver's matching dictionary as IOKit wants it: "*" means any value, so the key is left out.
+/// A driver's matching dictionary as IOKit wants it: "*" means any value, so the key is left out. USB matching takes
+/// idVendor only together with idProduct, so a vendor-only dictionary (Freedom Scientific's, any product) matched
+/// nothing and a Focus 5 by USB was never found (macOS 27, 21 Oct 2026); its properties go through IOPropertyMatch,
+/// which compares them as they are. FTDI's vendor (Brailliant's and VarioPro's dictionaries list it alone) is left
+/// out: it is a serial chip in countless adapters and boards, which would match, fail to load, and set TurnOver
+/// asking VoiceOver's braille server to quit and warning about a display that isn't there (review, 21 Oct 2026).
+static const NSInteger kFTDIVendor = 1027;   // 0x0403
+
 static NSMutableDictionary *matching(NSDictionary *autodetect) {
     NSMutableDictionary *m = [NSMutableDictionary dictionary];
     [autodetect enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
         if ([value isKindOfClass:NSString.class] && [value isEqual:@"*"]) return;
         m[key] = value;
     }];
+    if (![m[@"IOProviderClass"] isEqual:@"IOHIDDevice"] && m[@"idVendor"] && !m[@"idProduct"]) {
+        if ([m[@"idVendor"] respondsToSelector:@selector(integerValue)] && [m[@"idVendor"] integerValue] == kFTDIVendor) return nil;
+        NSMutableDictionary *props = [NSMutableDictionary dictionary];
+        for (NSString *key in m.allKeys) if (![key isEqual:@"IOProviderClass"]) { props[key] = m[key]; [m removeObjectForKey:key]; }
+        m[@"IOPropertyMatch"] = props;
+    }
     return m;
 }
 
@@ -102,8 +115,16 @@ static NSNumber *number(io_service_t s, NSString *key) {
     return v ? (__bridge_transfer NSNumber *)v : nil;
 }
 
+static NSMutableString *detectReport;
+static BOOL detectFoundUnopened;
++ (NSString *)lastDetectReport { return detectReport ?: @""; }
++ (BOOL)lastDetectFoundUnopened { return detectFoundUnopened; }
+
 + (NSArray<TOAppleBrailleDisplay *> *)detect {
     [self loadFrameworks];
+    detectReport = [NSMutableString string];
+    detectFoundUnopened = NO;
+    NSMutableSet *unopened = [NSMutableSet set];   // "vendor:product" claimed by a driver that wouldn't load
     NSMutableArray *found = [NSMutableArray array];
     NSMutableSet *taken = [NSMutableSet set];   // "vendor:product" already driven (a display is both a USB and a HID device)
     NSArray *names = [[NSFileManager.defaultManager contentsOfDirectoryAtPath:kDrivers error:nil] sortedArrayUsingSelector:@selector(compare:)];
@@ -126,19 +147,25 @@ static NSNumber *number(io_service_t s, NSString *key) {
         NSDictionary *d = c[@"match"];
         BOOL hid = [d[@"IOProviderClass"] isEqual:@"IOHIDDevice"];
         io_iterator_t it = 0;
-        if (IOServiceGetMatchingServices(kIOMainPortDefault, (__bridge_retained CFDictionaryRef)matching(d), &it) != KERN_SUCCESS) continue;
+        NSMutableDictionary *m = matching(d);
+        if (!m) continue;
+        if (IOServiceGetMatchingServices(kIOMainPortDefault, (__bridge_retained CFDictionaryRef)m, &it) != KERN_SUCCESS) continue;
         io_service_t s;
         while ((s = IOIteratorNext(it))) {
             NSNumber *v = number(s, hid ? @"VendorID" : @"idVendor"), *p = number(s, hid ? @"ProductID" : @"idProduct");
             NSString *key = [NSString stringWithFormat:@"%@:%@", v, p];
             if (![taken containsObject:key]) {
                 TOAppleBrailleDisplay *display = [[self alloc] initWithService:s hid:hid bundlePath:c[@"path"]];
-                if (display) { [found addObject:display]; [taken addObject:key]; }
+                [detectReport appendFormat:@" %@ %@ (%@): %@;", [[c[@"path"] lastPathComponent] stringByDeletingPathExtension],
+                    key, d[@"IOProviderClass"], display ? [NSString stringWithFormat:@"loaded, %ld cells", (long)display.cellCount] : @"would not load"];
+                if (display) { [found addObject:display]; [taken addObject:key]; [unopened removeObject:key]; }
+                else [unopened addObject:key];
             }
             IOObjectRelease(s);
         }
         IOObjectRelease(it);
     }
+    detectFoundUnopened = unopened.count > 0;
     return found;
 }
 
@@ -229,10 +256,18 @@ static NSMutableString *btReport;
     // The model's key table, beside the driver's code.
     NSMutableDictionary *keys = [NSMutableDictionary dictionary];
     NSString *table = [_bundle pathForResource:_modelIdentifier ofType:@"plist"];
+    NSMutableDictionary *chords = [NSMutableDictionary dictionary];
     for (NSDictionary *e in (table ? [NSArray arrayWithContentsOfFile:table] : nil) ?: @[]) {
-        NSInteger ident = [e[@"SCRBrailleInputIdentifier"] integerValue];
-        if (e[@"SCRCommand"]) keys[@(ident)] = e[@"SCRCommand"];
+        id raw = e[@"SCRBrailleInputIdentifier"];
+        if (!e[@"SCRCommand"] || !raw) continue;
+        // A chord is two identifiers joined by a dot ("65793.68097", rocker down with a selector key): read whole, it
+        // came out as its first key and overwrote that key's own command (the Focus 40's table, 21 Oct 2026).
+        NSString *text = [raw description];
+        if ([text containsString:@"."]) { chords[text] = e[@"SCRCommand"]; continue; }
+        NSNumber *ident = @([raw integerValue]);
+        keys[ident] = e[@"SCRCommand"];
     }
+    _chordCommands = chords;
     _keyCommands = keys;
     return self;
 }
