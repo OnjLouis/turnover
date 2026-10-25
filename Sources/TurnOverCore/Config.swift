@@ -322,7 +322,11 @@ public struct Config: Codable {
         /// A settings file that already holds a list or a mode other than everywhere reads as on, so nobody's set-up
         /// changes with the build.
         public var perAppReaders = false
-        /// TurnOver comes on when VoiceOver turns off, and goes off when VoiceOver comes on (not coexisting).
+        /// TurnOver and VoiceOver swap: one comes on as the other goes off. TurnOver turns VoiceOver off as it starts and
+        /// on as it quits, comes on when VoiceOver turns off and steps aside when VoiceOver comes on. Off, each reader
+        /// has its own switch and neither touches the other: a Mac with no reader on purpose, such as VoiceOver reading
+        /// inside a virtual machine (23 Oct 2026). One switch since 25 Oct 2026: the quit had its own, which said the
+        /// same thing by halves.
         public var swapWithVoiceOver = true
         public init() {}
         public static let leadModes = ["apps", "everywhere", "voiceover"]
