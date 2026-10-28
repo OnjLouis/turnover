@@ -650,6 +650,19 @@ func pureTests() {
         ])
         expect(c.voiceId, "test.structured.voice"); expect(c.rate, 0.65)
     }
+    test("VoiceOver export: an empty structured voice falls back to flattened settings") {
+        let c = try readVoiceOverDefault([
+            "VoiceOverDefaultVoiceSelections": ["en", ["voiceId": "", "rate": 0.2]],
+            flatSpeech + "SCRVoiceIdentifier": "test.flat.voice", flatSpeech + "SCRRateAsPercent": 75.0
+        ])
+        expect(c.voiceId, "test.flat.voice"); expect(c.rate, 0.75)
+    }
+    test("VoiceOver export: an empty structured voice without a fallback still fails") {
+        do {
+            _ = try readVoiceOverDefault(["VoiceOverDefaultVoiceSelections": ["en", ["voiceId": ""]]])
+            Harness.fail("empty structured voice was accepted")
+        } catch VoiceOverSettings.ReadError.noVoice { } catch { Harness.fail("unexpected error: \(error)") }
+    }
     test("VoiceOver export: enabled default-language voice replaces the system voice") {
         let c = try readVoiceOverDefault([
             flatSpeech + "SCRVoiceIdentifier": "test.system.voice",
@@ -676,16 +689,30 @@ func pureTests() {
     test("VoiceOver export: copied settings apply before a speech player is initialised") {
         let saved = config
         let savedPlayer = Speech.player
-        defer { config = saved; Speech.player = savedPlayer }
+        let savedPersists = Config.persists
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent("voiceover-apply-\(UUID().uuidString)", isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let snapshot = folder.appendingPathComponent("before.json")
+        defer {
+            config = saved; Speech.player = savedPlayer; Config.persists = savedPersists
+            try? FileManager.default.removeItem(at: folder)
+        }
+        Config.persists = false
         Speech.player = nil
         var c = try readVoiceOverDefault([flatSpeech + "SCRVoiceIdentifier": "test.unavailable.voice"])
         c.rate = 0.9; c.pitch = 0.4; c.volume = 0.65
         c.verbosity = "SCRVerbosityMedium"; c.typingEcho = "SCRTypingEchoWords"
-        _ = VoiceOverSettings.apply(c)
+        _ = VoiceOverSettings.apply(c, undoSnapshot: snapshot)
+        guard let data = try? Data(contentsOf: snapshot) else { return Harness.fail("Undo snapshot was not written to the temporary path") }
+        let before = try JSONDecoder().decode(Config.self, from: data)
+        expect(before.speech.rate, saved.speech.rate); expect(before.speech.voice, saved.speech.voice)
         expect(config.speech.rate, 0.9); expect(config.speech.pitch, 0.4); expect(config.speech.volume, 65)
         expect(config.presentation.speakHints, false); expect(config.presentation.reportObjectDescriptions, true)
         expect(config.keyboard.speakTypedCharacters, .off); expect(config.keyboard.speakTypedWords, .editControls)
         expect(config.speech.voice, saved.speech.voice, "an unavailable voice does not replace the current one")
+        c.rate = 0.7
+        _ = VoiceOverSettings.apply(c, undoSnapshot: snapshot)
+        expect(try Data(contentsOf: snapshot), data, "a later copy must not replace the original Undo snapshot")
     }
     test("recipes: the built-in recipes load and describe the apps as the code did") {
         let repo = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()

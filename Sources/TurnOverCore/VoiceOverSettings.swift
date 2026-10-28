@@ -154,7 +154,7 @@ extension VoiceOverSettings {
         // [language, {voiceId, rate, pitch, volume}, language, {…}]: the first selection is the main voice.
         if let sel = d["VoiceOverDefaultVoiceSelections"] as? [Any],
            let voice = sel.first(where: { $0 is [String: Any] }) as? [String: Any],
-           let id = voice["voiceId"] as? String {
+           let id = voice["voiceId"] as? String, !id.isEmpty {
             c.voiceId = id
             c.rate = (voice["rate"] as? NSNumber)?.floatValue ?? 0.5
             c.volume = (voice["volume"] as? NSNumber)?.floatValue ?? 1
@@ -202,10 +202,10 @@ extension VoiceOverSettings {
 
     /// The settings as they were before the last copy, for Undo (15 Oct 2026: "a restore just in case").
     static let beforeURL = AppPaths.file("settings-before-voiceover-copy.json")
-    static func keepBefore() {
+    static func keepBefore(at url: URL) {
         // Only until an undo: a second copy must not overwrite the values from before the first (the code review, 17 Oct 2026).
-        guard !FileManager.default.fileExists(atPath: beforeURL.path) else { return }
-        if let data = try? JSONEncoder().encode(config) { try? data.write(to: beforeURL, options: .atomic) }
+        guard !FileManager.default.fileExists(atPath: url.path) else { return }
+        if let data = try? JSONEncoder().encode(config) { try? data.write(to: url, options: .atomic) }
     }
     /// Undo: the fields the copy changes go back to the kept values; everything else stays as it is now.
     public static func undo() -> String {
@@ -229,8 +229,9 @@ extension VoiceOverSettings {
 
     /// Applies what TurnOver can, saves, and returns what to say. A voice TurnOver can't use (a Siri voice) keeps
     /// the current one and says so.
-    public static func apply(_ c: Copied) -> String {
-        keepBefore()
+    /// Tools and tests may supply a separate Undo snapshot URL rather than use the app's live backup.
+    public static func apply(_ c: Copied, undoSnapshot: URL? = nil) -> String {
+        keepBefore(at: undoSnapshot ?? beforeURL)
         var said: [String] = []
         var voiceNote = ""
         if let v = AVSpeechSynthesisVoice(identifier: c.voiceId), !c.voiceId.contains("gryphon") {
